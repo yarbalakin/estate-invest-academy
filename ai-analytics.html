@@ -1139,7 +1139,7 @@ td strong { color:var(--text); }
 
 // Q&A Assistant
 (function(){
-  const ANTHROPIC_API_KEY = localStorage.getItem('anthropic_key') || ''; // Введите ключ через консоль: localStorage.setItem('anthropic_key','sk-ant-...')
+  let apiKey = localStorage.getItem('anthropic_key') || '';
 
   const fab = document.getElementById('qaFab');
   const overlay = document.getElementById('qaOverlay');
@@ -1151,6 +1151,35 @@ td strong { color:var(--text); }
   const error = document.getElementById('qaError');
 
   let selectedText = '';
+
+  // Показать/скрыть форму ввода ключа
+  function showKeyForm(){
+    answer.className = 'qa-answer visible';
+    answer.innerHTML = '<div style="text-align:center">'
+      + '<p style="margin-bottom:12px;color:var(--text-2)">Для работы ассистента нужен API-ключ Anthropic.</p>'
+      + '<input id="qaKeyInput" type="password" placeholder="sk-ant-api03-..." '
+      + 'style="width:100%;padding:10px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;font-family:inherit;outline:none;margin-bottom:10px">'
+      + '<button id="qaKeySave" style="background:var(--accent);color:#fff;border:none;border-radius:8px;padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit">Сохранить</button>'
+      + '<p style="margin-top:8px;font-size:11px;color:var(--text-3)">Ключ сохраняется только в вашем браузере (localStorage)</p>'
+      + '</div>';
+    document.getElementById('qaKeySave').addEventListener('click', function(){
+      const val = document.getElementById('qaKeyInput').value.trim();
+      if(val && val.startsWith('sk-')){
+        apiKey = val;
+        localStorage.setItem('anthropic_key', val);
+        answer.className = 'qa-answer';
+        answer.innerHTML = '';
+        error.className = 'qa-error';
+        input.focus();
+      } else {
+        document.getElementById('qaKeyInput').style.borderColor = 'var(--red)';
+      }
+    });
+    document.getElementById('qaKeyInput').addEventListener('keydown', function(e){
+      if(e.key === 'Enter') document.getElementById('qaKeySave').click();
+    });
+    setTimeout(() => { const ki = document.getElementById('qaKeyInput'); if(ki) ki.focus(); }, 50);
+  }
 
   document.addEventListener('mouseup', function(e){
     if(e.target.closest('.qa-overlay') || e.target.closest('.sidebar')) return;
@@ -1185,7 +1214,7 @@ td strong { color:var(--text); }
     error.className = 'qa-error';
     loading.style.display = 'none';
     overlay.classList.add('open');
-    setTimeout(() => input.focus(), 100);
+    if(!apiKey){ showKeyForm(); } else { setTimeout(() => input.focus(), 100); }
   });
 
   document.getElementById('qaClose').addEventListener('click', () => overlay.classList.remove('open'));
@@ -1207,11 +1236,7 @@ td strong { color:var(--text); }
     const question = input.value.trim();
     if(!question) return;
 
-    if(!ANTHROPIC_API_KEY){
-      error.innerHTML = 'API-ключ не настроен.';
-      error.className = 'qa-error visible';
-      return;
-    }
+    if(!apiKey){ showKeyForm(); return; }
 
     sendBtn.disabled = true;
     loading.style.display = 'flex';
@@ -1223,7 +1248,7 @@ td strong { color:var(--text); }
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-api-key': ANTHROPIC_API_KEY,
+          'x-api-key': apiKey,
           'anthropic-version': '2023-06-01',
           'anthropic-dangerous-direct-browser-access': 'true'
         },
