@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ИП31 Соликамская — Итоги проекта</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --bg2: #111827;
+    --card: #1e293b;
+    --card2: #253349;
+    --border: #334155;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #6366f1;
+    --accent2: #818cf8;
+    --green: #22c55e;
+    --green2: #4ade80;
+    --yellow: #eab308;
+    --red: #ef4444;
+    --orange: #f97316;
+    --cyan: #06b6d4;
+    --pink: #ec4899;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    padding: 80px 20px 60px;
+    text-align: center;
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(99,102,241,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(34,197,94,0.06) 0%, transparent 50%);
+    animation: pulse 8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(99,102,241,0.2);
+    border: 1px solid rgba(99,102,241,0.4);
+    color: var(--accent2);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+
+  /* Stats row */
+  .stats-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .stat-card {
+    background: rgba(30,41,59,0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    text-align: center;
+    min-width: 160px;
+    flex: 1;
+  }
+  .stat-card .label {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .stat-card .value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #fff;
+  }
+  .stat-card .sub {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* Container */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Sections */
+  section {
+    padding: 60px 0;
+  }
+  section + section {
+    border-top: 1px solid rgba(51,65,85,0.5);
+  }
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  h2 span {
+    color: var(--accent2);
+  }
+  .section-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 32px;
+  }
+  h3 {
+    font-size: 1.2rem;
+    color: var(--accent2);
+    margin: 24px 0 12px;
+  }
+
+  /* Intro */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 700px) {
+    .intro-grid { grid-template-columns: 1fr; }
+  }
+  .intro-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .intro-card h3 {
+    margin-top: 0;
+    font-size: 1rem;
+  }
+  .intro-card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .intro-card .big-num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--green);
+    margin: 8px 0;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 40px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--green), var(--yellow));
+    border-radius: 2px;
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 28px;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -32px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    background: var(--bg);
+  }
+  .tl-item.sold::before { border-color: var(--green); background: rgba(34,197,94,0.2); }
+  .tl-item.money::before { border-color: var(--yellow); background: rgba(234,179,8,0.2); }
+  .tl-item.milestone::before { border-color: var(--pink); background: rgba(236,72,153,0.2); width: 18px; height: 18px; left: -34px; top: 4px; }
+  .tl-date {
+    font-size: 0.8rem;
+    color: var(--accent2);
+    font-weight: 600;
+  }
+  .tl-title {
+    font-size: 1.05rem;
+    color: #fff;
+    font-weight: 600;
+    margin: 2px 0;
+  }
+  .tl-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .tl-amount {
+    display: inline-block;
+    background: rgba(34,197,94,0.15);
+    color: var(--green);
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+
+  /* Objects grid */
+  .objects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .obj-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .obj-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+  }
+  .obj-card.obj-warm::before { background: var(--green); }
+  .obj-card.obj-hostel::before { background: var(--accent); }
+  .obj-card.obj-cold::before { background: var(--cyan); }
+  .obj-card.obj-center::before { background: var(--yellow); }
+  .obj-card.obj-back::before { background: var(--orange); }
+  .obj-num {
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(99,102,241,0.15);
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    line-height: 1;
+  }
+  .obj-card h4 {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .obj-card .obj-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--green);
+    margin: 8px 0;
+  }
+  .obj-card .obj-meta {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+  .obj-status {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .status-closed { background: rgba(34,197,94,0.15); color: var(--green); }
+  .status-installment { background: rgba(234,179,8,0.15); color: var(--yellow); }
+
+  /* Charts */
+  .chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 700px) {
+    .chart-grid { grid-template-columns: 1fr; }
+  }
+  .chart-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .chart-box h4 {
+    font-size: 0.95rem;
+    color: var(--accent2);
+    margin-bottom: 16px;
+  }
+  .chart-box canvas {
+    max-height: 280px;
+  }
+  .chart-box.full-width {
+    grid-column: 1 / -1;
+  }
+
+  /* Progress bars */
+  .progress-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0;
+  }
+  .progress-label {
+    width: 120px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .progress-bar {
+    flex: 1;
+    height: 24px;
+    background: rgba(51,65,85,0.5);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 12px;
+    transition: width 1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    min-width: 40px;
+  }
+  .progress-value {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fff;
+    width: 80px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* ROI highlight */
+  .roi-highlight {
+    background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(34,197,94,0.1));
+    border: 1px solid rgba(99,102,241,0.3);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    margin: 32px 0;
+  }
+  .roi-highlight .roi-big {
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent2), var(--green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .roi-highlight .roi-label {
+    font-size: 1.1rem;
+    color: var(--muted);
+  }
+  .roi-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 24px;
+  }
+  .roi-item {
+    text-align: center;
+  }
+  .roi-item .ri-val {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+  }
+  .roi-item .ri-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  th {
+    background: var(--card);
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 2px solid var(--accent);
+    color: var(--accent2);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .total-row td {
+    font-weight: 700;
+    border-top: 2px solid var(--accent);
+  }
+  .num { color: var(--green); font-weight: 600; }
+
+  /* Strategy */
+  .strategy-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin: 24px 0;
+  }
+  @media (max-width: 700px) {
+    .strategy-box { flex-direction: column; text-align: center; }
+  }
+  .strategy-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    background: rgba(99,102,241,0.15);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .strategy-text h3 { margin-top: 0; }
+  .strategy-text p { color: var(--muted); font-size: 0.95rem; }
+
+  /* Callout */
+  .callout {
+    background: rgba(99,102,241,0.1);
+    border: 1px solid rgba(99,102,241,0.3);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-size: 0.95rem;
+  }
+  .callout.green {
+    background: rgba(34,197,94,0.1);
+    border-color: rgba(34,197,94,0.3);
+  }
+
+  /* Map */
+  .map-wrap {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin: 24px 0;
+  }
+  .map-wrap iframe {
+    width: 100%;
+    height: 350px;
+    border: none;
+  }
+
+  /* Before/After */
+  .ba-grid {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 0;
+    align-items: stretch;
+    margin: 32px 0;
+  }
+  @media (max-width: 600px) {
+    .ba-grid { grid-template-columns: 1fr; }
+    .ba-arrow { transform: rotate(90deg); padding: 16px 0 !important; }
+  }
+  .ba-card {
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .ba-before {
+    background: linear-gradient(135deg, #1e293b, #334155);
+    border: 1px solid var(--border);
+  }
+  .ba-after {
+    background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(34,197,94,0.1));
+    border: 1px solid rgba(99,102,241,0.3);
+  }
+  .ba-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+  }
+  .ba-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+  }
+  .ba-val {
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1.1;
+  }
+  .ba-sub {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* Site plan */
+  .site-plan {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    margin: 24px 0;
+  }
+  .site-plan h4 {
+    font-size: 0.95rem;
+    color: var(--accent2);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .site-plan svg {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* Photo placeholders */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 24px 0;
+  }
+  .photo-placeholder {
+    background: linear-gradient(135deg, var(--card), var(--card2));
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    aspect-ratio: 16/10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Comparison */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    align-items: center;
+    margin: 24px 0;
+  }
+  .compare-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+  }
+  .compare-arrow {
+    font-size: 2rem;
+    color: var(--accent2);
+    padding: 0 16px;
+  }
+  .compare-card .cc-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .compare-card .cc-val {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin: 4px 0;
+  }
+  @media (max-width: 600px) {
+    .compare-grid { grid-template-columns: 1fr; gap: 12px; }
+    .compare-arrow { transform: rotate(90deg); }
+  }
+
+  /* Waterfall list */
+  .waterfall {
+    margin: 20px 0;
+  }
+  .wf-row {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(51,65,85,0.5);
+  }
+  .wf-label {
+    flex: 1;
+    font-size: 0.95rem;
+  }
+  .wf-val {
+    font-size: 1rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    width: 140px;
+    text-align: right;
+  }
+  .wf-row.wf-total {
+    border-top: 2px solid var(--accent);
+    border-bottom: none;
+    padding-top: 12px;
+    margin-top: 4px;
+  }
+  .wf-row.wf-total .wf-label,
+  .wf-row.wf-total .wf-val { font-weight: 800; font-size: 1.1rem; }
+</style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Итоги проекта</div>
+    <h1>Соликамская, 319</h1>
+    <p>Как мы превратили промышленную базу за 29 млн в портфель из 5 активов стоимостью 90 млн — и вернули инвесторам 72% прибыли</p>
+  </div>
+  <div class="stats-row" style="margin-top: 32px;">
+    <div class="stat-card">
+      <div class="label">Покупка</div>
+      <div class="value">28.9 млн</div>
+      <div class="sub">ноябрь 2023</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Продажа</div>
+      <div class="value" style="color: var(--green)">90.4 млн</div>
+      <div class="sub">5 объектов</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Прибыль инвесторов</div>
+      <div class="value" style="color: var(--green)">21.3 млн</div>
+      <div class="sub">171 инвестор</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Эффективность капитала</div>
+      <div class="value" style="color: var(--accent2)">82.15%</div>
+      <div class="sub">годовых (средневзвеш.)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ОБЪЕКТ И КАРТА ==================== -->
+<section style="background: var(--bg2);">
+  <div class="container">
+    <h2>Что мы <span>купили</span></h2>
+    <p class="section-sub">Промышленная база в Перми — 1 гектар земли с постройками</p>
+
+    <div class="intro-grid">
+      <div class="intro-card">
+        <h3>Территория</h3>
+        <div class="big-num">10 087 м²</div>
+        <p>Земельный участок 1 гектар: два ангара (тёплый и холодный), трёхэтажное офисное здание, несколько земельных участков, подъездные пути.</p>
+      </div>
+      <div class="intro-card">
+        <h3>Сбор</h3>
+        <div class="big-num">14 дней</div>
+        <p>171 инвестор собрал 28 888 889 рублей за две недели. Старт проекта — 21 ноября 2023 года.</p>
+      </div>
+    </div>
+
+    <!-- Карта -->
+    <div class="map-wrap" style="margin-top: 24px;">
+      <iframe src="https://yandex.ru/map-widget/v1/?ll=56.315930%2C58.028750&z=16&pt=56.315930%2C58.028750%2Cpm2rdm&l=sat%2Cskl" allowfullscreen></iframe>
+    </div>
+    <p style="text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 8px;">г. Пермь, ул. Соликамская, д. 319</p>
+
+    <!-- Фото-плейсхолдеры -->
+    <div class="photo-grid" style="margin-top: 24px;">
+      <div class="photo-placeholder">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        <span>Фото промбазы</span>
+        <span style="font-size:0.7rem; color:var(--border)">(добавить)</span>
+      </div>
+      <div class="photo-placeholder">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        <span>Территория сверху</span>
+        <span style="font-size:0.7rem; color:var(--border)">(добавить)</span>
+      </div>
+      <div class="photo-placeholder">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        <span>Ангары</span>
+        <span style="font-size:0.7rem; color:var(--border)">(добавить)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== СТРАТЕГИЯ ==================== -->
+<section>
+  <div class="container">
+    <h2>Стратегия: <span>разделяй и зарабатывай</span></h2>
+    <p class="section-sub">Вместо продажи объекта целиком мы разделили территорию на 5 частей — и получили в 3.1 раза больше</p>
+
+    <!-- Инфографика до/после -->
+    <div class="ba-grid">
+      <div class="ba-card ba-before">
+        <div class="ba-title">Было</div>
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <rect x="8" y="30" width="64" height="40" rx="4" fill="#475569" stroke="#64748b" stroke-width="2"/>
+          <rect x="16" y="20" width="20" height="50" rx="2" fill="#334155" stroke="#64748b" stroke-width="2"/>
+          <rect x="44" y="24" width="20" height="46" rx="2" fill="#334155" stroke="#64748b" stroke-width="2"/>
+          <rect x="20" y="36" width="4" height="4" rx="1" fill="#64748b"/><rect x="26" y="36" width="4" height="4" rx="1" fill="#64748b"/>
+          <rect x="20" y="44" width="4" height="4" rx="1" fill="#64748b"/><rect x="26" y="44" width="4" height="4" rx="1" fill="#64748b"/>
+          <rect x="48" y="36" width="4" height="4" rx="1" fill="#64748b"/><rect x="56" y="36" width="4" height="4" rx="1" fill="#64748b"/>
+          <path d="M8 30 L40 10 L72 30" stroke="#64748b" stroke-width="2" fill="#334155"/>
+        </svg>
+        <div class="ba-val" style="color: var(--muted);">29 млн</div>
+        <div class="ba-sub">Одна промбаза</div>
+      </div>
+
+      <div class="ba-arrow">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <path d="M8 20 L28 20 M22 14 L28 20 L22 26" stroke="var(--accent2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="ba-card ba-after">
+        <div class="ba-title">Стало</div>
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <rect x="4" y="4" width="22" height="22" rx="4" fill="rgba(34,197,94,0.2)" stroke="#22c55e" stroke-width="2"/>
+          <rect x="30" y="4" width="22" height="22" rx="4" fill="rgba(99,102,241,0.2)" stroke="#6366f1" stroke-width="2"/>
+          <rect x="56" y="4" width="22" height="22" rx="4" fill="rgba(6,182,212,0.2)" stroke="#06b6d4" stroke-width="2"/>
+          <rect x="4" y="30" width="22" height="22" rx="4" fill="rgba(234,179,8,0.2)" stroke="#eab308" stroke-width="2"/>
+          <rect x="30" y="30" width="22" height="22" rx="4" fill="rgba(249,115,22,0.2)" stroke="#f97316" stroke-width="2"/>
+          <text x="15" y="18" text-anchor="middle" font-size="8" fill="#22c55e" font-weight="700">TA</text>
+          <text x="41" y="18" text-anchor="middle" font-size="8" fill="#6366f1" font-weight="700">X</text>
+          <text x="67" y="18" text-anchor="middle" font-size="8" fill="#06b6d4" font-weight="700">XA</text>
+          <text x="15" y="44" text-anchor="middle" font-size="8" fill="#eab308" font-weight="700">ЦЗ</text>
+          <text x="41" y="44" text-anchor="middle" font-size="8" fill="#f97316" font-weight="700">ЗЗ</text>
+        </svg>
+        <div class="ba-val" style="color: var(--green);">90.4 млн</div>
+        <div class="ba-sub">5 объектов &middot; x3.1 к покупке</div>
+      </div>
+    </div>
+
+    <!-- Схема территории -->
+    <div class="site-plan">
+      <h4>Схема территории промбазы</h4>
+      <svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
+        <!-- Фон территории -->
+        <rect x="20" y="20" width="660" height="360" rx="12" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+
+        <!-- Дорога -->
+        <rect x="0" y="370" width="700" height="30" rx="4" fill="#1e293b"/>
+        <text x="350" y="390" text-anchor="middle" font-size="11" fill="#64748b" font-family="system-ui">ул. Соликамская</text>
+        <line x1="100" y1="385" x2="600" y2="385" stroke="#475569" stroke-width="1" stroke-dasharray="20,10"/>
+
+        <!-- 1. Тёплый ангар -->
+        <rect x="40" y="40" width="200" height="150" rx="8" fill="rgba(34,197,94,0.12)" stroke="#22c55e" stroke-width="2"/>
+        <rect x="60" y="70" width="160" height="90" rx="4" fill="rgba(34,197,94,0.08)" stroke="#22c55e" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="140" y="60" text-anchor="middle" font-size="13" fill="#22c55e" font-weight="700" font-family="system-ui">Тёплый ангар</text>
+        <text x="140" y="110" text-anchor="middle" font-size="18" fill="#22c55e" font-weight="800" font-family="system-ui">24.4 млн</text>
+        <text x="140" y="130" text-anchor="middle" font-size="10" fill="#4ade80" font-family="system-ui">ЗАКРЫТ</text>
+        <text x="140" y="148" text-anchor="middle" font-size="10" fill="#64748b" font-family="system-ui">май 2024</text>
+
+        <!-- 2. Хостел (офис) -->
+        <rect x="260" y="40" width="200" height="150" rx="8" fill="rgba(99,102,241,0.12)" stroke="#6366f1" stroke-width="2"/>
+        <rect x="280" y="70" width="160" height="90" rx="4" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="360" y="60" text-anchor="middle" font-size="13" fill="#818cf8" font-weight="700" font-family="system-ui">Хостел (офисное здание)</text>
+        <text x="360" y="110" text-anchor="middle" font-size="18" fill="#818cf8" font-weight="800" font-family="system-ui">30 млн</text>
+        <text x="360" y="130" text-anchor="middle" font-size="10" fill="#a5b4fc" font-family="system-ui">рассрочка 18 мес</text>
+        <text x="360" y="148" text-anchor="middle" font-size="10" fill="#64748b" font-family="system-ui">фев 2026</text>
+
+        <!-- 3. Холодный ангар -->
+        <rect x="480" y="40" width="180" height="150" rx="8" fill="rgba(6,182,212,0.12)" stroke="#06b6d4" stroke-width="2"/>
+        <rect x="500" y="70" width="140" height="90" rx="4" fill="rgba(6,182,212,0.08)" stroke="#06b6d4" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="570" y="60" text-anchor="middle" font-size="13" fill="#06b6d4" font-weight="700" font-family="system-ui">Холодный ангар</text>
+        <text x="570" y="110" text-anchor="middle" font-size="18" fill="#06b6d4" font-weight="800" font-family="system-ui">16.5 млн</text>
+        <text x="570" y="130" text-anchor="middle" font-size="10" fill="#22d3ee" font-family="system-ui">рассрочка 12 мес</text>
+        <text x="570" y="148" text-anchor="middle" font-size="10" fill="#64748b" font-family="system-ui">окт 2025</text>
+
+        <!-- 4. Центральный ЗУ -->
+        <rect x="40" y="210" width="300" height="140" rx="8" fill="rgba(234,179,8,0.12)" stroke="#eab308" stroke-width="2"/>
+        <text x="190" y="250" text-anchor="middle" font-size="13" fill="#eab308" font-weight="700" font-family="system-ui">Земельный участок «Центральный»</text>
+        <text x="190" y="280" text-anchor="middle" font-size="18" fill="#eab308" font-weight="800" font-family="system-ui">12.6 млн</text>
+        <text x="190" y="300" text-anchor="middle" font-size="10" fill="#facc15" font-family="system-ui">24 сотки &middot; рассрочка 20 мес</text>
+        <text x="190" y="318" text-anchor="middle" font-size="10" fill="#64748b" font-family="system-ui">ноя 2025</text>
+
+        <!-- 5. Задний участок -->
+        <rect x="360" y="210" width="300" height="140" rx="8" fill="rgba(249,115,22,0.12)" stroke="#f97316" stroke-width="2"/>
+        <text x="510" y="250" text-anchor="middle" font-size="13" fill="#f97316" font-weight="700" font-family="system-ui">Земельный участок «Задний»</text>
+        <text x="510" y="280" text-anchor="middle" font-size="18" fill="#f97316" font-weight="800" font-family="system-ui">6.97 млн</text>
+        <text x="510" y="300" text-anchor="middle" font-size="10" fill="#fb923c" font-family="system-ui">14 соток &middot; рассрочка 35 мес</text>
+        <text x="510" y="318" text-anchor="middle" font-size="10" fill="#64748b" font-family="system-ui">окт 2025</text>
+
+        <!-- Итого -->
+        <rect x="250" y="365" width="200" height="28" rx="14" fill="rgba(99,102,241,0.2)" stroke="rgba(99,102,241,0.4)" stroke-width="1"/>
+        <text x="350" y="384" text-anchor="middle" font-size="12" fill="#818cf8" font-weight="700" font-family="system-ui">ИТОГО: 90.4 млн</text>
+      </svg>
+    </div>
+
+    <!-- Стратегия — шаги с SVG-иконками -->
+    <div class="strategy-box">
+      <div class="strategy-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <div class="strategy-text">
+        <h3>Купили промбазу целиком</h3>
+        <p>Земельный участок 1 гектар в Перми: два ангара, офисное здание, несколько земельных участков. 171 инвестор собрал 28.9 млн рублей за две недели.</p>
+      </div>
+    </div>
+    <div class="strategy-box">
+      <div class="strategy-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+        </svg>
+      </div>
+      <div class="strategy-text">
+        <h3>Разделили на 5 самостоятельных объектов</h3>
+        <p>Каждый объект получил свою стратегию: прямая продажа, создание бизнеса, рассрочка. Это позволило продать каждую часть по максимальной цене для её типа.</p>
+      </div>
+    </div>
+    <div class="strategy-box">
+      <div class="strategy-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+      </div>
+      <div class="strategy-text">
+        <h3>Создали бизнес внутри проекта</h3>
+        <p>Офисное здание превратили в хостел: вложили 8.6 млн в ремонт, запустили арендный бизнес с доходностью 26% годовых, а затем продали готовый бизнес за 30 млн.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ОБЪЕКТЫ ==================== -->
+<section>
+  <div class="container">
+    <h2>5 объектов — <span>5 историй</span></h2>
+    <p class="section-sub">Каждая часть промбазы прошла свой путь от покупки до продажи</p>
+
+    <!-- Фото до/после хостела -->
+    <h3>Трансформация: офисное здание в хостел</h3>
+    <div class="photo-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 32px;">
+      <div class="photo-placeholder" style="aspect-ratio: 16/9;">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        <span style="font-size: 0.9rem; color: var(--muted);">ДО: Офисное здание</span>
+        <span style="font-size:0.7rem; color:var(--border)">(фото добавить)</span>
+      </div>
+      <div class="photo-placeholder" style="aspect-ratio: 16/9; border-color: var(--accent);">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        <span style="font-size: 0.9rem; color: var(--accent2);">ПОСЛЕ: Хостел 132 места</span>
+        <span style="font-size:0.7rem; color:var(--border)">(фото добавить)</span>
+      </div>
+    </div>
+
+    <div class="objects-grid">
+
+      <div class="obj-card obj-warm">
+        <div class="obj-num">01</div>
+        <h4>Тёплый ангар</h4>
+        <div class="obj-price">~24.5 млн</div>
+        <div class="obj-meta">
+          Продан через 6 месяцев после покупки. Покупатель внёс задаток 1 млн в декабре 2023, полный расчёт — в мае 2024. Первая крупная выплата инвесторам — 37% капитала за 170 дней.
+        </div>
+        <div class="obj-status status-closed">Закрыт</div>
+      </div>
+
+      <div class="obj-card obj-hostel">
+        <div class="obj-num">02</div>
+        <h4>Хостел (офисное здание)</h4>
+        <div class="obj-price">30 млн</div>
+        <div class="obj-meta">
+          Превратили старое офисное здание в хостел: 507 м², 132 места, 16 комнат. Арендный бизнес с июня 2024: 26% годовых чистыми. Продан в феврале 2026 за 30 млн (10 млн взнос + 18 мес рассрочка).
+        </div>
+        <div class="obj-status status-installment">Рассрочка до 08.2027</div>
+      </div>
+
+      <div class="obj-card obj-cold">
+        <div class="obj-num">03</div>
+        <h4>Холодный ангар</h4>
+        <div class="obj-price">16.5 млн</div>
+        <div class="obj-meta">
+          Продан в рассрочку с октября 2025. Покупатель планирует рассчитаться досрочно. 5 платежей получено (3.85 млн), остаток 12.6 млн.
+        </div>
+        <div class="obj-status status-installment">Рассрочка до 09.2026</div>
+      </div>
+
+      <div class="obj-card obj-center">
+        <div class="obj-num">04</div>
+        <h4>Земельный участок «Центральный»</h4>
+        <div class="obj-price">12.6 млн</div>
+        <div class="obj-meta">
+          24 сотки. Продан в рассрочку на 20 месяцев. 4 платежа получено (340 тыс.), остаток 12.2 млн. Платежи нарастающие — от 40К до 1.26 млн.
+        </div>
+        <div class="obj-status status-installment">Рассрочка до 06.2027</div>
+      </div>
+
+      <div class="obj-card obj-back">
+        <div class="obj-num">05</div>
+        <h4>Земельный участок «Задний»</h4>
+        <div class="obj-price">6.97 млн</div>
+        <div class="obj-meta">
+          14 соток. Продан в рассрочку на 35 месяцев. 4 платежа получено (700 тыс.), остаток 6.27 млн. Самый длинный график — до сентября 2028.
+        </div>
+        <div class="obj-status status-installment">Рассрочка до 09.2028</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TIMELINE ==================== -->
+<section style="background: var(--bg2);">
+  <div class="container">
+    <h2>Хронология <span>проекта</span></h2>
+    <p class="section-sub">2.5 года от покупки до полной реализации</p>
+
+    <div class="timeline">
+
+      <div class="tl-item milestone">
+        <div class="tl-date">21 ноября 2023</div>
+        <div class="tl-title">Покупка промбазы</div>
+        <div class="tl-desc">171 инвестор собрал 28.9 млн за две недели. Земельный участок 1 га + два ангара + офисное здание.</div>
+        <div class="tl-amount">28 888 889 руб.</div>
+      </div>
+
+      <div class="tl-item sold">
+        <div class="tl-date">8 декабря 2023</div>
+        <div class="tl-title">Задаток за тёплый ангар</div>
+        <div class="tl-desc">Не прошло двух недель с закрытия сбора — получен задаток 1 млн за первый объект.</div>
+        <div class="tl-amount">1 000 000 руб.</div>
+      </div>
+
+      <div class="tl-item money">
+        <div class="tl-date">9 мая 2024</div>
+        <div class="tl-title">Продажа тёплого ангара</div>
+        <div class="tl-desc">Первая крупная выплата инвесторам — 37% вложенного капитала вернулось за 170 дней. ROI этой части = 155% годовых.</div>
+        <div class="tl-amount">10 865 632 руб. инвесторам</div>
+      </div>
+
+      <div class="tl-item milestone">
+        <div class="tl-date">Июнь 2024</div>
+        <div class="tl-title">Запуск хостела</div>
+        <div class="tl-desc">Офисное здание превращено в хостел: 8.6 млн в ремонт, 132 места, арендный бизнес запущен. Доходность 26% годовых чистыми.</div>
+      </div>
+
+      <div class="tl-item money">
+        <div class="tl-date">Июнь 2024 — Май 2025</div>
+        <div class="tl-title">Ежемесячные выплаты аренды</div>
+        <div class="tl-desc">12 ежемесячных выплат по 200 000 рублей. Стабильный денежный поток для инвесторов.</div>
+        <div class="tl-amount">2 400 000 руб. за 12 мес</div>
+      </div>
+
+      <div class="tl-item sold">
+        <div class="tl-date">Октябрь — Ноябрь 2025</div>
+        <div class="tl-title">Продажа трёх объектов</div>
+        <div class="tl-desc">Холодный ангар, земельный участок «Центральный» и «Задний» — проданы в рассрочку. Начались ежемесячные платежи.</div>
+      </div>
+
+      <div class="tl-item milestone">
+        <div class="tl-date">Февраль 2026</div>
+        <div class="tl-title">Продажа хостела за 30 млн</div>
+        <div class="tl-desc">Последний объект продан. Все 5 частей промбазы реализованы. Первоначальный взнос 10 млн, рассрочка 18 мес.</div>
+        <div class="tl-amount">30 000 000 руб.</div>
+      </div>
+
+      <div class="tl-item money">
+        <div class="tl-date">Март 2026</div>
+        <div class="tl-title">Крупная выплата инвесторам</div>
+        <div class="tl-desc">Распределены 12 млн от продажи хостела: 7 млн (первоначальный взнос) + 1.82 млн + 3.22 млн (допвыплаты). 85% тела возвращено.</div>
+        <div class="tl-amount">12 037 700 руб. инвесторам</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">До сентября 2028</div>
+        <div class="tl-title">Завершение всех рассрочек</div>
+        <div class="tl-desc">Остаток тела + прибыль будут полностью распределены из поступающих рассрочек по 4 объектам.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ДИАГРАММЫ ==================== -->
+<section>
+  <div class="container">
+    <h2>Аналитика <span>в цифрах</span></h2>
+    <p class="section-sub">Как распределились продажи, доходы и возврат капитала</p>
+
+    <div class="chart-grid">
+
+      <div class="chart-box">
+        <h4>Доля каждого объекта в продажах</h4>
+        <canvas id="chartPie"></canvas>
+      </div>
+
+      <div class="chart-box">
+        <h4>Возврат капитала инвесторам</h4>
+        <canvas id="chartDoughnut"></canvas>
+      </div>
+
+      <div class="chart-box full-width">
+        <h4>Помесячные поступления (прогноз)</h4>
+        <canvas id="chartBar"></canvas>
+      </div>
+
+      <div class="chart-box full-width">
+        <h4>Кумулятивный возврат капитала</h4>
+        <canvas id="chartLine"></canvas>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ПРОГРЕСС ВОЗВРАТА ==================== -->
+<section style="background: var(--bg2);">
+  <div class="container">
+    <h2>Прогресс <span>по объектам</span></h2>
+    <p class="section-sub">Сколько получено и сколько осталось по каждому объекту</p>
+
+    <div class="progress-row">
+      <div class="progress-label">Тёплый ангар</div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 100%; background: var(--green);">100%</div>
+      </div>
+      <div class="progress-value" style="color: var(--green)">Закрыт</div>
+    </div>
+    <div class="progress-row">
+      <div class="progress-label">Хостел</div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 33%; background: var(--accent);">33%</div>
+      </div>
+      <div class="progress-value">10 / 30 млн</div>
+    </div>
+    <div class="progress-row">
+      <div class="progress-label">Холодный ангар</div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 23%; background: var(--cyan);">23%</div>
+      </div>
+      <div class="progress-value">3.85 / 16.5 млн</div>
+    </div>
+    <div class="progress-row">
+      <div class="progress-label">Центральный ЗУ</div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 3%; background: var(--yellow); min-width: 40px;">3%</div>
+      </div>
+      <div class="progress-value">0.34 / 12.6 млн</div>
+    </div>
+    <div class="progress-row">
+      <div class="progress-label">Задний ЗУ</div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 10%; background: var(--orange); min-width: 40px;">10%</div>
+      </div>
+      <div class="progress-value">0.7 / 7 млн</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== ФИНАНСЫ ==================== -->
+<section>
+  <div class="container">
+    <h2>Финансовый <span>результат</span></h2>
+    <p class="section-sub">Итоговый расчёт прибыли с учётом всех налогов и расходов</p>
+
+    <div class="roi-highlight">
+      <div class="roi-big">82,15%</div>
+      <div class="roi-label">эффективность капитала (средневзвешенный ROI годовых)</div>
+      <div class="roi-row">
+        <div class="roi-item">
+          <div class="ri-val">72,5%</div>
+          <div class="ri-label">ROI за проект</div>
+        </div>
+        <div class="roi-item">
+          <div class="ri-val">~24,2%</div>
+          <div class="ri-label">простой ROI годовых</div>
+        </div>
+        <div class="roi-item">
+          <div class="ri-val">21.3 млн</div>
+          <div class="ri-label">прибыль инвесторов</div>
+        </div>
+        <div class="roi-item">
+          <div class="ri-val">171</div>
+          <div class="ri-label">инвестор</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Почему 82% а не 24%?</strong> Простой ROI годовых (72.5% / 3 года = 24.2%) не учитывает, что деньги возвращались частями. Первая крупная выплата — 37% капитала — вернулась всего за 170 дней (155% годовых). Средневзвешенный ROI учитывает реальный срок работы каждого рубля.
+    </div>
+
+    <h3>Водопад прибыли</h3>
+    <div class="waterfall">
+      <div class="wf-row">
+        <div class="wf-label">Будущие поступления (рассрочки)</div>
+        <div class="wf-val">51 129 334</div>
+      </div>
+      <div class="wf-row">
+        <div class="wf-label">УСН 10%</div>
+        <div class="wf-val" style="color: var(--red)">-3 891 333</div>
+      </div>
+      <div class="wf-row">
+        <div class="wf-label">Чистые поступления</div>
+        <div class="wf-val" style="color: var(--green)">47 238 000</div>
+      </div>
+      <div class="wf-row">
+        <div class="wf-label">Налог на имущество</div>
+        <div class="wf-val" style="color: var(--red)">-231 852</div>
+      </div>
+      <div class="wf-row">
+        <div class="wf-label" style="font-weight:600">Итого к распределению</div>
+        <div class="wf-val" style="font-weight:700">47 006 148</div>
+      </div>
+      <div class="wf-row">
+        <div class="wf-label">Возврат остатка тела инвесторам</div>
+        <div class="wf-val" style="color: var(--red)">-4 331 300</div>
+      </div>
+      <div class="wf-row">
+        <div class="wf-label" style="font-weight:600">Свободная прибыль</div>
+        <div class="wf-val" style="color: var(--green); font-weight:700">42 674 848</div>
+      </div>
+      <div class="wf-row wf-total">
+        <div class="wf-label">Прибыль инвесторов (50%)</div>
+        <div class="wf-val" style="color: var(--green)">21 337 424</div>
+      </div>
+      <div class="wf-row wf-total">
+        <div class="wf-label">Прибыль Estate Invest (50%)</div>
+        <div class="wf-val">21 337 424</div>
+      </div>
+    </div>
+
+    <h3>УСН 10% по объектам</h3>
+    <table>
+      <thead>
+        <tr><th>Объект</th><th style="text-align:right">Остаток</th><th style="text-align:right">УСН 10%</th><th style="text-align:right">Чистая</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Холодный ангар</td><td style="text-align:right">12 648 334</td><td style="text-align:right; color: var(--red)">1 264 833</td><td style="text-align:right" class="num">11 383 500</td></tr>
+        <tr><td>Задний участок</td><td style="text-align:right">6 265 000</td><td style="text-align:right; color: var(--red)">626 500</td><td style="text-align:right" class="num">5 638 500</td></tr>
+        <tr><td>Хостел</td><td style="text-align:right">20 000 000</td><td style="text-align:right; color: var(--red)">2 000 000</td><td style="text-align:right" class="num">18 000 000</td></tr>
+        <tr><td>Центральный ЗУ</td><td style="text-align:right">12 216 000</td><td style="text-align:right; color: var(--muted)">0</td><td style="text-align:right" class="num">12 216 000</td></tr>
+        <tr class="total-row"><td>ИТОГО</td><td style="text-align:right">51 129 334</td><td style="text-align:right; color: var(--red)">3 891 333</td><td style="text-align:right" class="num">47 238 000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ==================== ДРОБНАЯ ДОХОДНОСТЬ ==================== -->
+<section style="background: var(--bg2);">
+  <div class="container">
+    <h2>Дробная <span>доходность</span></h2>
+    <p class="section-sub">ROI годовых для каждой выплаты — ранние деньги работали эффективнее</p>
+
+    <div class="chart-grid" style="margin-bottom: 24px;">
+      <div class="chart-box full-width">
+        <h4>ROI годовых vs срок (дни)</h4>
+        <canvas id="chartScatter"></canvas>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>#</th><th>Дата</th><th style="text-align:right">Сумма</th><th style="text-align:right">Дней</th><th style="text-align:right">% капитала</th><th style="text-align:right">Прибыль</th><th style="text-align:right">ROI год.</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>09.05.2024</td><td class="num" style="text-align:right">10 865 632</td><td style="text-align:right">170</td><td style="text-align:right">36,69%</td><td class="num" style="text-align:right">7 828 398</td><td style="text-align:right; color: var(--green); font-weight:700">154,69%</td></tr>
+        <tr><td>2</td><td>15.05.2024</td><td class="num" style="text-align:right">1 800 000</td><td style="text-align:right">176</td><td style="text-align:right">6,08%</td><td class="num" style="text-align:right">1 296 852</td><td style="text-align:right; color: var(--green); font-weight:700">149,42%</td></tr>
+        <tr><td>3-14</td><td>06.2024 — 05.2025</td><td class="num" style="text-align:right">200 000 x12</td><td style="text-align:right">220-541</td><td style="text-align:right">0,68% x12</td><td class="num" style="text-align:right">1 729 140</td><td style="text-align:right">119 — 49%</td></tr>
+        <tr><td>15</td><td>17.11.2025</td><td class="num" style="text-align:right">200 000</td><td style="text-align:right">727</td><td style="text-align:right">0,68%</td><td class="num" style="text-align:right">144 095</td><td style="text-align:right">36,17%</td></tr>
+        <tr><td>16</td><td>27.11.2025</td><td class="num" style="text-align:right">400 000</td><td style="text-align:right">737</td><td style="text-align:right">1,35%</td><td class="num" style="text-align:right">288 189</td><td style="text-align:right">35,68%</td></tr>
+        <tr><td>17</td><td>23.12.2025</td><td class="num" style="text-align:right">545 000</td><td style="text-align:right">763</td><td style="text-align:right">1,84%</td><td class="num" style="text-align:right">392 658</td><td style="text-align:right">34,47%</td></tr>
+        <tr><td>18</td><td>22.01.2026</td><td class="num" style="text-align:right">550 000</td><td style="text-align:right">793</td><td style="text-align:right">1,86%</td><td class="num" style="text-align:right">396 260</td><td style="text-align:right">33,16%</td></tr>
+        <tr><td>19</td><td>25.02.2026</td><td class="num" style="text-align:right">620 000</td><td style="text-align:right">827</td><td style="text-align:right">2,09%</td><td class="num" style="text-align:right">446 693</td><td style="text-align:right">31,80%</td></tr>
+        <tr><td>20</td><td>25.02.2026</td><td class="num" style="text-align:right">7 000 000</td><td style="text-align:right">827</td><td style="text-align:right">23,64%</td><td class="num" style="text-align:right">5 043 313</td><td style="text-align:right">31,80%</td></tr>
+        <tr><td>21</td><td>25.02.2026</td><td class="num" style="text-align:right">1 820 000</td><td style="text-align:right">827</td><td style="text-align:right">6,15%</td><td class="num" style="text-align:right">1 311 261</td><td style="text-align:right">31,80%</td></tr>
+        <tr><td>22</td><td>25.02.2026</td><td class="num" style="text-align:right">3 217 700</td><td style="text-align:right">827</td><td style="text-align:right">10,86%</td><td class="num" style="text-align:right">2 318 267</td><td style="text-align:right">31,80%</td></tr>
+        <tr class="total-row">
+          <td colspan="2">ИТОГО</td>
+          <td style="text-align:right">29 618 332</td>
+          <td></td>
+          <td style="text-align:right">100%</td>
+          <td style="text-align:right" class="num">21 337 424</td>
+          <td style="text-align:right; color: var(--green); font-weight:700">82,15%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout green" style="margin-top: 20px;">
+      <strong>Вывод:</strong> Быстрая продажа тёплого ангара (37% капитала за 170 дней) кардинально повысила эффективность всего проекта. Это подтверждает стратегию Estate Invest — максимально быстро оборачивать крупные части капитала.
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ИТОГИ ==================== -->
+<section>
+  <div class="container">
+    <h2>Что дальше</h2>
+    <p class="section-sub">Все объекты проданы. Впереди — получение рассрочек и распределение прибыли</p>
+
+    <div class="intro-grid">
+      <div class="intro-card">
+        <h3>Рассрочки продолжаются</h3>
+        <div class="big-num">47.2 млн</div>
+        <p>Чистых поступлений ожидается от 4 объектов до сентября 2028. Все средства распределяются между инвесторами по мере поступления.</p>
+      </div>
+      <div class="intro-card">
+        <h3>Остаток тела</h3>
+        <div class="big-num">4.3 млн</div>
+        <p>Осталось вернуть 14.7% от вложенного. Будет полностью закрыто из ближайших рассрочек в течение 2-3 месяцев.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 24px;">
+      <strong>Поздравляем наших инвесторов с завершением активной фазы проекта!</strong><br>
+      Проверяйте свои личные кабинеты — выплаты продолжают поступать ежемесячно.
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== FOOTER ==================== -->
+<div class="footer">
+  Estate Invest | ИП31 Соликамская, 319 | Итоги проекта | 16.03.2026<br>
+  <span style="color: var(--accent2)">estateinvest.online</span>
+</div>
+
+<!-- ==================== CHARTS JS ==================== -->
+<script>
+  const colors = {
+    accent: '#6366f1',
+    accent2: '#818cf8',
+    green: '#22c55e',
+    green2: '#4ade80',
+    yellow: '#eab308',
+    orange: '#f97316',
+    cyan: '#06b6d4',
+    pink: '#ec4899',
+    red: '#ef4444',
+    muted: '#94a3b8',
+  };
+
+  Chart.defaults.color = '#94a3b8';
+  Chart.defaults.borderColor = 'rgba(51,65,85,0.5)';
+  Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif";
+
+  // 1. Pie — доля объектов
+  new Chart(document.getElementById('chartPie'), {
+    type: 'pie',
+    data: {
+      labels: ['Тёплый ангар', 'Хостел', 'Холодный ангар', 'Центральный ЗУ', 'Задний ЗУ'],
+      datasets: [{
+        data: [24500000, 30000000, 16498334, 12556000, 6965000],
+        backgroundColor: [colors.green, colors.accent, colors.cyan, colors.yellow, colors.orange],
+        borderWidth: 0,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 16, usePointStyle: true } },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              const v = ctx.parsed;
+              const pct = ((v / 90519334) * 100).toFixed(1);
+              return ` ${ctx.label}: ${(v/1000000).toFixed(1)} млн (${pct}%)`;
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // 2. Doughnut — возврат капитала
+  new Chart(document.getElementById('chartDoughnut'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Возвращено тела', 'Прибыль (выплачено)', 'Прибыль (ожидание)', 'Остаток тела'],
+      datasets: [{
+        data: [25107589, 3000000, 18337424, 4331300],
+        backgroundColor: [colors.green, colors.accent2, 'rgba(129,140,248,0.3)', colors.yellow],
+        borderWidth: 0,
+      }]
+    },
+    options: {
+      responsive: true,
+      cutout: '60%',
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 16, usePointStyle: true } },
+      }
+    }
+  });
+
+  // 3. Bar — помесячные поступления
+  new Chart(document.getElementById('chartBar'), {
+    type: 'bar',
+    data: {
+      labels: ['Мар 26', 'Апр 26', 'Май 26', 'Июн 26', 'Июл 26', 'Авг 26', 'Сен 26', 'Окт 26', 'Ноя 26', 'Дек 26', 'Янв 27', 'Фев 27', 'Мар 27', 'Апр 27', 'Май 27', 'Июн 27', 'Июл 27', 'Авг 27'],
+      datasets: [
+        {
+          label: 'Холодный ангар',
+          data: [691667, 2178000, 2124667, 2091333, 2058000, 2024667, 1480000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          backgroundColor: colors.cyan,
+        },
+        {
+          label: 'Хостел',
+          data: [1111113, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111],
+          backgroundColor: colors.accent,
+        },
+        {
+          label: 'Центральный ЗУ',
+          data: [40000, 100000, 100000, 100000, 100000, 100000, 620000, 1000000, 1257000, 1257000, 1257000, 1257000, 1257000, 1257000, 1257000, 1257000, 0, 0],
+          backgroundColor: colors.yellow,
+        },
+        {
+          label: 'Задний ЗУ',
+          data: [175000, 175000, 175000, 175000, 175000, 175000, 175000, 210000, 210000, 210000, 210000, 210000, 210000, 210000, 210000, 210000, 210000, 210000],
+          backgroundColor: colors.orange,
+        },
+      ]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        x: { stacked: true, grid: { display: false } },
+        y: {
+          stacked: true,
+          ticks: {
+            callback: (v) => (v / 1000000).toFixed(1) + 'М'
+          }
+        }
+      },
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 16, usePointStyle: true } },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => ` ${ctx.dataset.label}: ${(ctx.parsed.y / 1000).toFixed(0)}К`
+          }
+        }
+      }
+    }
+  });
+
+  // 4. Line — кумулятивный возврат
+  const payouts = [
+    { date: '05.2024', amount: 10865632 },
+    { date: '05.2024', amount: 1800000 },
+    { date: '06.2024', amount: 200000 },
+    { date: '07.2024', amount: 200000 },
+    { date: '08.2024', amount: 200000 },
+    { date: '09.2024', amount: 200000 },
+    { date: '10.2024', amount: 200000 },
+    { date: '11.2024', amount: 200000 },
+    { date: '12.2024', amount: 200000 },
+    { date: '01.2025', amount: 200000 },
+    { date: '02.2025', amount: 200000 },
+    { date: '03.2025', amount: 200000 },
+    { date: '04.2025', amount: 200000 },
+    { date: '05.2025', amount: 200000 },
+    { date: '11.2025', amount: 200000 },
+    { date: '11.2025', amount: 400000 },
+    { date: '12.2025', amount: 545000 },
+    { date: '01.2026', amount: 550000 },
+    { date: '02.2026', amount: 620000 },
+    { date: '02.2026', amount: 7000000 },
+    { date: '02.2026', amount: 1820000 },
+    { date: '02.2026', amount: 3217700 },
+  ];
+  let cumulative = 0;
+  const cumLabels = [];
+  const cumData = [];
+  const invested = 29438889;
+  payouts.forEach(p => {
+    cumulative += p.amount;
+    cumLabels.push(p.date);
+    cumData.push(cumulative);
+  });
+
+  new Chart(document.getElementById('chartLine'), {
+    type: 'line',
+    data: {
+      labels: cumLabels,
+      datasets: [
+        {
+          label: 'Выплачено (кумулятивно)',
+          data: cumData,
+          borderColor: colors.green,
+          backgroundColor: 'rgba(34,197,94,0.1)',
+          fill: true,
+          tension: 0.3,
+          pointRadius: 4,
+          pointBackgroundColor: colors.green,
+        },
+        {
+          label: 'Вложено инвесторами',
+          data: cumLabels.map(() => invested),
+          borderColor: 'rgba(239,68,68,0.5)',
+          borderDash: [8, 4],
+          pointRadius: 0,
+          fill: false,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          ticks: {
+            callback: (v) => (v / 1000000).toFixed(0) + ' млн'
+          }
+        }
+      },
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 16, usePointStyle: true } },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => ` ${ctx.dataset.label}: ${(ctx.parsed.y / 1000000).toFixed(1)} млн`
+          }
+        }
+      }
+    }
+  });
+
+  // 5. Scatter — ROI vs дни
+  const scatterData = [
+    { x: 170, y: 154.69, r: 36.69 },
+    { x: 176, y: 149.42, r: 6.08 },
+    { x: 220, y: 119.53, r: 0.68 },
+    { x: 239, y: 110.03, r: 0.68 },
+    { x: 268, y: 98.12, r: 0.68 },
+    { x: 299, y: 87.95, r: 0.68 },
+    { x: 329, y: 79.93, r: 0.68 },
+    { x: 360, y: 73.05, r: 0.68 },
+    { x: 391, y: 67.26, r: 0.68 },
+    { x: 421, y: 62.46, r: 0.68 },
+    { x: 451, y: 58.31, r: 0.68 },
+    { x: 478, y: 55.02, r: 0.68 },
+    { x: 511, y: 51.46, r: 0.68 },
+    { x: 541, y: 48.61, r: 0.68 },
+    { x: 727, y: 36.17, r: 0.68 },
+    { x: 737, y: 35.68, r: 1.35 },
+    { x: 763, y: 34.47, r: 1.84 },
+    { x: 793, y: 33.16, r: 1.86 },
+    { x: 827, y: 31.80, r: 2.09 },
+    { x: 827, y: 31.80, r: 23.64 },
+    { x: 827, y: 31.80, r: 6.15 },
+    { x: 827, y: 31.80, r: 10.86 },
+  ];
+
+  new Chart(document.getElementById('chartScatter'), {
+    type: 'bubble',
+    data: {
+      datasets: [{
+        label: 'Выплаты',
+        data: scatterData.map(d => ({ x: d.x, y: d.y, r: Math.max(4, Math.sqrt(d.r) * 5) })),
+        backgroundColor: scatterData.map(d => d.y > 100 ? 'rgba(34,197,94,0.6)' : d.y > 50 ? 'rgba(99,102,241,0.6)' : 'rgba(234,179,8,0.6)'),
+        borderColor: scatterData.map(d => d.y > 100 ? colors.green : d.y > 50 ? colors.accent : colors.yellow),
+        borderWidth: 2,
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        x: {
+          title: { display: true, text: 'Дней от старта', color: colors.muted },
+          min: 100,
+          max: 900,
+        },
+        y: {
+          title: { display: true, text: 'ROI годовых, %', color: colors.muted },
+          min: 20,
+          max: 170,
+        }
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              const d = scatterData[ctx.dataIndex];
+              return ` ${d.x} дней | ROI ${d.y}% | ${d.r}% капитала`;
+            }
+          }
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
