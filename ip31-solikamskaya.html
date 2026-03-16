@@ -804,7 +804,7 @@
     </div>
     <div class="stat-card">
       <div class="label">Эффективность капитала</div>
-      <div class="value" style="color: var(--accent2)">82.15%</div>
+      <div class="value" style="color: var(--accent2)">81.97%</div>
       <div class="sub">годовых (средневзвеш.)</div>
     </div>
   </div>
@@ -1132,8 +1132,8 @@
       <div class="tl-item money">
         <div class="tl-date">Март 2026</div>
         <div class="tl-title">Крупная выплата инвесторам</div>
-        <div class="tl-desc">Распределены 12 млн от продажи хостела: 7 млн (первоначальный взнос) + 1.82 млн + 3.22 млн (допвыплаты). 85% тела возвращено.</div>
-        <div class="tl-amount">12 037 700 руб. инвесторам</div>
+        <div class="tl-desc">Распределены 7 млн от первоначального взноса за хостел. 83% тела возвращено. Далее: 2 млн в апреле + 3.2 млн в мае — тело закроется полностью.</div>
+        <div class="tl-amount">7 000 000 руб. инвесторам</div>
       </div>
 
       <div class="tl-item">
@@ -1162,16 +1162,6 @@
       <div class="chart-box">
         <h4>Возврат капитала инвесторам</h4>
         <canvas id="chartDoughnut"></canvas>
-      </div>
-
-      <div class="chart-box full-width">
-        <h4>Помесячные поступления (прогноз)</h4>
-        <canvas id="chartBar"></canvas>
-      </div>
-
-      <div class="chart-box full-width">
-        <h4>Кумулятивный возврат капитала</h4>
-        <canvas id="chartLine"></canvas>
       </div>
 
     </div>
@@ -1230,7 +1220,7 @@
     <p class="section-sub">Итоговый расчёт прибыли с учётом всех налогов и расходов</p>
 
     <div class="roi-highlight">
-      <div class="roi-big">82,15%</div>
+      <div class="roi-big">81,97%</div>
       <div class="roi-label">эффективность капитала (средневзвешенный ROI годовых)</div>
       <div class="roi-row">
         <div class="roi-item">
@@ -1338,16 +1328,16 @@
         <tr><td>17</td><td>23.12.2025</td><td class="num" style="text-align:right">545 000</td><td style="text-align:right">763</td><td style="text-align:right">1,84%</td><td class="num" style="text-align:right">392 658</td><td style="text-align:right">34,47%</td></tr>
         <tr><td>18</td><td>22.01.2026</td><td class="num" style="text-align:right">550 000</td><td style="text-align:right">793</td><td style="text-align:right">1,86%</td><td class="num" style="text-align:right">396 260</td><td style="text-align:right">33,16%</td></tr>
         <tr><td>19</td><td>25.02.2026</td><td class="num" style="text-align:right">620 000</td><td style="text-align:right">827</td><td style="text-align:right">2,09%</td><td class="num" style="text-align:right">446 693</td><td style="text-align:right">31,80%</td></tr>
-        <tr><td>20</td><td>25.02.2026</td><td class="num" style="text-align:right">7 000 000</td><td style="text-align:right">827</td><td style="text-align:right">23,64%</td><td class="num" style="text-align:right">5 043 313</td><td style="text-align:right">31,80%</td></tr>
-        <tr><td>21</td><td>25.02.2026</td><td class="num" style="text-align:right">1 820 000</td><td style="text-align:right">827</td><td style="text-align:right">6,15%</td><td class="num" style="text-align:right">1 311 261</td><td style="text-align:right">31,80%</td></tr>
-        <tr><td>22</td><td>25.02.2026</td><td class="num" style="text-align:right">3 217 700</td><td style="text-align:right">827</td><td style="text-align:right">10,86%</td><td class="num" style="text-align:right">2 318 267</td><td style="text-align:right">31,80%</td></tr>
+        <tr><td>20</td><td>17.03.2026</td><td class="num" style="text-align:right">7 000 000</td><td style="text-align:right">847</td><td style="text-align:right">23,64%</td><td class="num" style="text-align:right">5 043 313</td><td style="text-align:right">31,05%</td></tr>
+        <tr><td>21</td><td>01.04.2026</td><td class="num" style="text-align:right">2 017 780</td><td style="text-align:right">862</td><td style="text-align:right">6,81%</td><td class="num" style="text-align:right">1 453 757</td><td style="text-align:right">30,51%</td></tr>
+        <tr><td>22</td><td>01.05.2026</td><td class="num" style="text-align:right">3 217 432</td><td style="text-align:right">892</td><td style="text-align:right">10,86%</td><td class="num" style="text-align:right">2 318 074</td><td style="text-align:right">29,48%</td></tr>
         <tr class="total-row">
           <td colspan="2">ИТОГО</td>
-          <td style="text-align:right">29 618 332</td>
+          <td style="text-align:right">29 615 844</td>
           <td></td>
           <td style="text-align:right">100%</td>
           <td style="text-align:right" class="num">21 337 424</td>
-          <td style="text-align:right; color: var(--green); font-weight:700">82,15%</td>
+          <td style="text-align:right; color: var(--green); font-weight:700">81,97%</td>
         </tr>
       </tbody>
     </table>
@@ -1458,137 +1448,7 @@
     }
   });
 
-  // 3. Bar — помесячные поступления
-  new Chart(document.getElementById('chartBar'), {
-    type: 'bar',
-    data: {
-      labels: ['Мар 26', 'Апр 26', 'Май 26', 'Июн 26', 'Июл 26', 'Авг 26', 'Сен 26', 'Окт 26', 'Ноя 26', 'Дек 26', 'Янв 27', 'Фев 27', 'Мар 27', 'Апр 27', 'Май 27', 'Июн 27', 'Июл 27', 'Авг 27'],
-      datasets: [
-        {
-          label: 'Холодный ангар',
-          data: [691667, 2178000, 2124667, 2091333, 2058000, 2024667, 1480000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          backgroundColor: colors.cyan,
-        },
-        {
-          label: 'Хостел',
-          data: [1111113, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111, 1111111],
-          backgroundColor: colors.accent,
-        },
-        {
-          label: 'Центральный ЗУ',
-          data: [40000, 100000, 100000, 100000, 100000, 100000, 620000, 1000000, 1257000, 1257000, 1257000, 1257000, 1257000, 1257000, 1257000, 1257000, 0, 0],
-          backgroundColor: colors.yellow,
-        },
-        {
-          label: 'Задний ЗУ',
-          data: [175000, 175000, 175000, 175000, 175000, 175000, 175000, 210000, 210000, 210000, 210000, 210000, 210000, 210000, 210000, 210000, 210000, 210000],
-          backgroundColor: colors.orange,
-        },
-      ]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        x: { stacked: true, grid: { display: false } },
-        y: {
-          stacked: true,
-          ticks: {
-            callback: (v) => (v / 1000000).toFixed(1) + 'М'
-          }
-        }
-      },
-      plugins: {
-        legend: { position: 'bottom', labels: { padding: 16, usePointStyle: true } },
-        tooltip: {
-          callbacks: {
-            label: (ctx) => ` ${ctx.dataset.label}: ${(ctx.parsed.y / 1000).toFixed(0)}К`
-          }
-        }
-      }
-    }
-  });
-
-  // 4. Line — кумулятивный возврат
-  const payouts = [
-    { date: '05.2024', amount: 10865632 },
-    { date: '05.2024', amount: 1800000 },
-    { date: '06.2024', amount: 200000 },
-    { date: '07.2024', amount: 200000 },
-    { date: '08.2024', amount: 200000 },
-    { date: '09.2024', amount: 200000 },
-    { date: '10.2024', amount: 200000 },
-    { date: '11.2024', amount: 200000 },
-    { date: '12.2024', amount: 200000 },
-    { date: '01.2025', amount: 200000 },
-    { date: '02.2025', amount: 200000 },
-    { date: '03.2025', amount: 200000 },
-    { date: '04.2025', amount: 200000 },
-    { date: '05.2025', amount: 200000 },
-    { date: '11.2025', amount: 200000 },
-    { date: '11.2025', amount: 400000 },
-    { date: '12.2025', amount: 545000 },
-    { date: '01.2026', amount: 550000 },
-    { date: '02.2026', amount: 620000 },
-    { date: '02.2026', amount: 7000000 },
-    { date: '02.2026', amount: 1820000 },
-    { date: '02.2026', amount: 3217700 },
-  ];
-  let cumulative = 0;
-  const cumLabels = [];
-  const cumData = [];
-  const invested = 29438889;
-  payouts.forEach(p => {
-    cumulative += p.amount;
-    cumLabels.push(p.date);
-    cumData.push(cumulative);
-  });
-
-  new Chart(document.getElementById('chartLine'), {
-    type: 'line',
-    data: {
-      labels: cumLabels,
-      datasets: [
-        {
-          label: 'Выплачено (кумулятивно)',
-          data: cumData,
-          borderColor: colors.green,
-          backgroundColor: 'rgba(34,197,94,0.1)',
-          fill: true,
-          tension: 0.3,
-          pointRadius: 4,
-          pointBackgroundColor: colors.green,
-        },
-        {
-          label: 'Вложено инвесторами',
-          data: cumLabels.map(() => invested),
-          borderColor: 'rgba(239,68,68,0.5)',
-          borderDash: [8, 4],
-          pointRadius: 0,
-          fill: false,
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: {
-          ticks: {
-            callback: (v) => (v / 1000000).toFixed(0) + ' млн'
-          }
-        }
-      },
-      plugins: {
-        legend: { position: 'bottom', labels: { padding: 16, usePointStyle: true } },
-        tooltip: {
-          callbacks: {
-            label: (ctx) => ` ${ctx.dataset.label}: ${(ctx.parsed.y / 1000000).toFixed(1)} млн`
-          }
-        }
-      }
-    }
-  });
-
-  // 5. Scatter — ROI vs дни
+  // 3. Scatter — ROI vs дни
   const scatterData = [
     { x: 170, y: 154.69, r: 36.69 },
     { x: 176, y: 149.42, r: 6.08 },
@@ -1609,9 +1469,9 @@
     { x: 763, y: 34.47, r: 1.84 },
     { x: 793, y: 33.16, r: 1.86 },
     { x: 827, y: 31.80, r: 2.09 },
-    { x: 827, y: 31.80, r: 23.64 },
-    { x: 827, y: 31.80, r: 6.15 },
-    { x: 827, y: 31.80, r: 10.86 },
+    { x: 847, y: 31.05, r: 23.64 },
+    { x: 862, y: 30.51, r: 6.81 },
+    { x: 892, y: 29.48, r: 10.86 },
   ];
 
   new Chart(document.getElementById('chartScatter'), {
