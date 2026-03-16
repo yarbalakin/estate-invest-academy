@@ -3,34 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ИП31 Соликамская — Итоги проекта</title>
+<title>ИП31 Соликамская — Итоги проекта | Estate Invest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
   :root {
-    --bg: #0a0e1a;
-    --bg2: #111827;
-    --card: #1e293b;
-    --card2: #253349;
-    --border: #334155;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --accent: #6366f1;
-    --accent2: #818cf8;
+    --bg: #000000;
+    --bg2: #0a0a0a;
+    --card: #111111;
+    --card2: #1a1a1a;
+    --border: #222222;
+    --text: #f0f0f0;
+    --muted: #8c8c8c;
+    --accent: #F5B731;
+    --accent2: #FFCF4A;
     --green: #22c55e;
     --green2: #4ade80;
-    --yellow: #eab308;
+    --yellow: #F5B731;
     --red: #ef4444;
-    --orange: #f97316;
-    --cyan: #06b6d4;
-    --pink: #ec4899;
+    --orange: #F97316;
+    --cyan: #F5B731;
+    --pink: #F97316;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 
   /* Hero */
@@ -38,7 +41,7 @@
     position: relative;
     padding: 80px 20px 60px;
     text-align: center;
-    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+    background: linear-gradient(135deg, #000000 0%, #1a1400 50%, #000000 100%);
     overflow: hidden;
   }
   .hero::before {
@@ -48,8 +51,8 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle at 30% 50%, rgba(99,102,241,0.08) 0%, transparent 50%),
-                radial-gradient(circle at 70% 50%, rgba(34,197,94,0.06) 0%, transparent 50%);
+    background: radial-gradient(circle at 30% 50%, rgba(245,183,49,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(245,183,49,0.05) 0%, transparent 50%);
     animation: pulse 8s ease-in-out infinite;
   }
   @keyframes pulse {
@@ -59,9 +62,9 @@
   .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
   .hero-badge {
     display: inline-block;
-    background: rgba(99,102,241,0.2);
-    border: 1px solid rgba(99,102,241,0.4);
-    color: var(--accent2);
+    background: rgba(245,183,49,0.15);
+    border: 1px solid rgba(245,183,49,0.4);
+    color: var(--accent);
     font-size: 0.8rem;
     font-weight: 600;
     padding: 4px 16px;
@@ -218,7 +221,7 @@
   }
   .tl-item.sold::before { border-color: var(--green); background: rgba(34,197,94,0.2); }
   .tl-item.money::before { border-color: var(--yellow); background: rgba(234,179,8,0.2); }
-  .tl-item.milestone::before { border-color: var(--pink); background: rgba(236,72,153,0.2); width: 18px; height: 18px; left: -34px; top: 4px; }
+  .tl-item.milestone::before { border-color: var(--pink); background: rgba(249,115,22,0.2); width: 18px; height: 18px; left: -34px; top: 4px; }
   .tl-date {
     font-size: 0.8rem;
     color: var(--accent2);
@@ -275,7 +278,7 @@
   .obj-num {
     font-size: 3rem;
     font-weight: 900;
-    color: rgba(99,102,241,0.15);
+    color: rgba(245,183,49,0.15);
     position: absolute;
     top: 10px;
     right: 16px;
@@ -381,8 +384,8 @@
 
   /* ROI highlight */
   .roi-highlight {
-    background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(34,197,94,0.1));
-    border: 1px solid rgba(99,102,241,0.3);
+    background: linear-gradient(135deg, rgba(245,183,49,0.15), rgba(34,197,94,0.1));
+    border: 1px solid rgba(245,183,49,0.3);
     border-radius: 20px;
     padding: 40px;
     text-align: center;
@@ -467,7 +470,7 @@
     flex-shrink: 0;
     width: 80px;
     height: 80px;
-    background: rgba(99,102,241,0.15);
+    background: rgba(245,183,49,0.15);
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -478,8 +481,8 @@
 
   /* Callout */
   .callout {
-    background: rgba(99,102,241,0.1);
-    border: 1px solid rgba(99,102,241,0.3);
+    background: rgba(245,183,49,0.1);
+    border: 1px solid rgba(245,183,49,0.3);
     border-radius: 12px;
     padding: 20px 24px;
     margin: 20px 0;
@@ -530,8 +533,8 @@
     border: 1px solid var(--border);
   }
   .ba-after {
-    background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(34,197,94,0.1));
-    border: 1px solid rgba(99,102,241,0.3);
+    background: linear-gradient(135deg, rgba(245,183,49,0.15), rgba(34,197,94,0.1));
+    border: 1px solid rgba(245,183,49,0.3);
   }
   .ba-arrow {
     display: flex;
@@ -677,6 +680,29 @@
 <!-- ==================== HERO ==================== -->
 <div class="hero">
   <div class="hero-content">
+    <div style="display:flex;justify-content:center;margin-bottom:24px;">
+      <svg width="240" height="84" viewBox="0 0 342 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="120" height="120" rx="36" fill="#FFCD1E"/>
+        <g clip-path="url(#clip0_hero)">
+          <path d="M87 84.0003C87 84.7959 86.6839 85.559 86.1213 86.1216C85.5587 86.6842 84.7956 87.0003 84 87.0003H36C35.2044 87.0003 34.4413 86.6842 33.8787 86.1216C33.3161 85.559 33 84.7959 33 84.0003V51.9423C32.9998 51.4891 33.1023 51.0418 33.2997 50.6339C33.4972 50.2261 33.7845 49.8682 34.14 49.5873L58.14 30.6543C58.6696 30.2357 59.325 30.0081 60 30.0081C60.675 30.0081 61.3304 30.2357 61.86 30.6543L85.86 49.5843C86.2159 49.8655 86.5035 50.2238 86.7009 50.6323C86.8984 51.0407 87.0006 51.4886 87 51.9423V84.0003V84.0003ZM45 60.0003C45 63.9785 46.5804 67.7938 49.3934 70.6069C52.2064 73.4199 56.0218 75.0003 60 75.0003C63.9782 75.0003 67.7936 73.4199 70.6066 70.6069C73.4196 67.7938 75 63.9785 75 60.0003H69C69 62.3872 68.0518 64.6764 66.364 66.3642C64.6761 68.052 62.3869 69.0003 60 69.0003C57.6131 69.0003 55.3239 68.052 53.636 66.3642C51.9482 64.6764 51 62.3872 51 60.0003H45Z" fill="#1C1E21"/>
+        </g>
+        <path d="M156.725 51.7362H180.316V45.5667H164.975V37.9389H179.412V32.1619H164.975V24.7865H180.316V18.617H156.725V51.7362Z" fill="white"/>
+        <path d="M199.02 52.3532C202.033 52.3532 204.614 51.9232 206.761 51.0632C208.927 50.2032 210.584 48.9786 211.733 47.3895C212.882 45.8004 213.457 43.9215 213.457 41.7528V41.7247C213.457 39.1073 212.59 37.0508 210.858 35.5552C209.125 34.0595 206.412 32.9658 202.721 32.2741L199.104 31.6011C197.164 31.2271 195.752 30.7504 194.866 30.1708C193.981 29.5726 193.539 28.778 193.539 27.7871V27.7591C193.539 27.0113 193.755 26.3663 194.188 25.8241C194.622 25.2632 195.243 24.8332 196.053 24.5341C196.863 24.2163 197.842 24.0574 198.991 24.0574C200.668 24.0387 202.043 24.3752 203.116 25.0669C204.209 25.7587 204.84 26.7028 205.009 27.8993L205.038 28.1798H212.751L212.722 27.7591C212.609 25.8148 211.997 24.1135 210.886 22.6552C209.775 21.1783 208.211 20.0378 206.196 19.2339C204.199 18.4113 201.788 18 198.963 18C196.326 18 193.981 18.43 191.928 19.29C189.875 20.1313 188.255 21.3185 187.069 22.8515C185.901 24.3845 185.317 26.1887 185.317 28.2639V28.2919C185.317 30.7971 186.193 32.8443 187.945 34.4334C189.696 36.0226 192.314 37.135 195.799 37.7706L199.443 38.4717C201.534 38.8643 203.022 39.3504 203.907 39.9299C204.793 40.5095 205.235 41.3228 205.235 42.3697V42.3978C205.235 43.183 204.981 43.8747 204.472 44.473C203.983 45.0525 203.286 45.5106 202.382 45.8471C201.478 46.1649 200.413 46.3238 199.189 46.3238C197.965 46.3238 196.872 46.1649 195.912 45.8471C194.951 45.5106 194.16 45.0525 193.539 44.473C192.936 43.8934 192.569 43.211 192.437 42.4258L192.38 42.1734H184.639L184.667 42.566C184.799 44.6225 185.458 46.3893 186.645 47.8662C187.85 49.3245 189.498 50.4369 191.589 51.2034C193.699 51.9699 196.176 52.3532 199.02 52.3532Z" fill="white"/>
+        <path d="M226.397 51.7362H234.647V24.7865H244.535V18.617H216.536V24.7865H226.397V51.7362Z" fill="white"/>
+        <path d="M242.331 51.7362H251.005L259.113 25.4035H261.656V18.617H254.226L242.331 51.7362ZM249.055 44.0243H269.341L267.448 38.4717H250.977L249.055 44.0243ZM267.42 51.7362H276.093L264.199 18.617H259.311V25.4035L267.42 51.7362Z" fill="white"/>
+        <path d="M283.806 51.7362H292.056V24.7865H301.945V18.617H273.946V24.7865H283.806V51.7362Z" fill="white"/>
+        <path d="M306.409 51.7362H330V45.5667H314.659V37.9389H329.096V32.1619H314.659V24.7865H330V18.617H306.409V51.7362Z" fill="white"/>
+        <g opacity="0.5">
+          <path d="M156 104.383H164.25V71.2634H156V104.383Z" fill="white"/>
+          <path d="M170.522 104.383H178.687V83.7988H182.219L176.031 79.8728L193.689 104.383H200.64V71.2634H192.446V91.7071H188.943L195.13 95.6332L177.529 71.2634H170.522V104.383Z" fill="white"/>
+          <path d="M215.924 104.383H226.321L237.623 71.2634H228.384L221.236 96.6988H221.01L213.89 71.2634H204.651L215.924 104.383Z" fill="white"/>
+          <path d="M241.606 104.383H265.197V98.2132H249.856V90.5853H264.293V84.8084H249.856V77.433H265.197V71.2634H241.606V104.383Z" fill="white"/>
+          <path d="M283.901 105C286.914 105 289.495 104.57 291.642 103.71C293.808 102.85 295.466 101.625 296.615 100.036C297.763 98.4469 298.338 96.5679 298.338 94.3993V94.3712C298.338 91.7538 297.472 89.6973 295.739 88.2017C294.006 86.706 291.294 85.6123 287.602 84.9206L283.986 84.2475C282.045 83.8736 280.633 83.3969 279.748 82.8173C278.862 82.2191 278.42 81.4245 278.42 80.4336V80.4056C278.42 79.6578 278.636 79.0128 279.07 78.4706C279.503 77.9097 280.124 77.4797 280.934 77.1806C281.744 76.8628 282.724 76.7039 283.872 76.7039C285.549 76.6852 286.924 77.0217 287.997 77.7134C289.09 78.4052 289.721 79.3493 289.89 80.5458L289.919 80.8262H297.632L297.603 80.4056C297.49 78.4612 296.878 76.7599 295.767 75.3017C294.656 73.8247 293.092 72.6843 291.077 71.8804C289.08 71.0578 286.67 70.6465 283.844 70.6465C281.207 70.6465 278.862 71.0765 276.809 71.9365C274.756 72.7778 273.136 73.965 271.95 75.498C270.782 77.031 270.198 78.8352 270.198 80.9104V80.9384C270.198 83.4436 271.074 85.4908 272.826 87.0799C274.577 88.669 277.195 89.7814 280.68 90.4171L284.325 91.1182C286.415 91.5108 287.903 91.9969 288.788 92.5764C289.674 93.156 290.116 93.9693 290.116 95.0162V95.0443C290.116 95.8295 289.862 96.5212 289.354 97.1195C288.864 97.699 288.167 98.1571 287.263 98.4936C286.359 98.8114 285.295 98.9703 284.07 98.9703C282.846 98.9703 281.754 98.8114 280.793 98.4936C279.832 98.1571 279.041 97.699 278.42 97.1195C277.817 96.5399 277.45 95.8575 277.318 95.0723L277.261 94.8199H269.52L269.548 95.2125C269.68 97.269 270.339 99.0358 271.526 100.513C272.731 101.971 274.38 103.083 276.47 103.85C278.58 104.616 281.057 105 283.901 105Z" fill="white"/>
+          <path d="M311.278 104.383H319.528V77.433H329.416V71.2634H301.418V77.433H311.278V104.383Z" fill="white"/>
+        </g>
+        <defs><clipPath id="clip0_hero"><rect width="72" height="72" fill="white" transform="translate(24 24)"/></clipPath></defs>
+      </svg>
+    </div>
     <div class="hero-badge">Итоги проекта</div>
     <h1>Соликамская, 319</h1>
     <p>Как мы превратили промышленную базу за 29.4 млн в портфель из 5 активов стоимостью 90 млн — и вернули инвесторам 72% прибыли</p>
@@ -784,13 +810,13 @@
         <div class="ba-title">Стало</div>
         <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
           <rect x="4" y="4" width="22" height="22" rx="4" fill="rgba(34,197,94,0.2)" stroke="#22c55e" stroke-width="2"/>
-          <rect x="30" y="4" width="22" height="22" rx="4" fill="rgba(99,102,241,0.2)" stroke="#6366f1" stroke-width="2"/>
-          <rect x="56" y="4" width="22" height="22" rx="4" fill="rgba(6,182,212,0.2)" stroke="#06b6d4" stroke-width="2"/>
+          <rect x="30" y="4" width="22" height="22" rx="4" fill="rgba(245,183,49,0.2)" stroke="#F5B731" stroke-width="2"/>
+          <rect x="56" y="4" width="22" height="22" rx="4" fill="rgba(245,183,49,0.2)" stroke="#F5B731" stroke-width="2"/>
           <rect x="4" y="30" width="22" height="22" rx="4" fill="rgba(234,179,8,0.2)" stroke="#eab308" stroke-width="2"/>
           <rect x="30" y="30" width="22" height="22" rx="4" fill="rgba(249,115,22,0.2)" stroke="#f97316" stroke-width="2"/>
           <text x="15" y="18" text-anchor="middle" font-size="8" fill="#22c55e" font-weight="700">TA</text>
-          <text x="41" y="18" text-anchor="middle" font-size="8" fill="#6366f1" font-weight="700">X</text>
-          <text x="67" y="18" text-anchor="middle" font-size="8" fill="#06b6d4" font-weight="700">XA</text>
+          <text x="41" y="18" text-anchor="middle" font-size="8" fill="#F5B731" font-weight="700">X</text>
+          <text x="67" y="18" text-anchor="middle" font-size="8" fill="#F5B731" font-weight="700">XA</text>
           <text x="15" y="44" text-anchor="middle" font-size="8" fill="#eab308" font-weight="700">ЦЗ</text>
           <text x="41" y="44" text-anchor="middle" font-size="8" fill="#f97316" font-weight="700">ЗЗ</text>
         </svg>
@@ -804,7 +830,7 @@
       <h4>Схема территории промбазы</h4>
       <svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
         <!-- Фон территории -->
-        <rect x="20" y="20" width="660" height="360" rx="12" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+        <rect x="20" y="20" width="660" height="360" rx="12" fill="#000000" stroke="#334155" stroke-width="2"/>
 
         <!-- Дорога -->
         <rect x="0" y="370" width="700" height="30" rx="4" fill="#1e293b"/>
@@ -820,18 +846,18 @@
         <text x="140" y="148" text-anchor="middle" font-size="10" fill="#64748b" font-family="system-ui">май 2024</text>
 
         <!-- 2. Хостел (офис) -->
-        <rect x="260" y="40" width="200" height="150" rx="8" fill="rgba(99,102,241,0.12)" stroke="#6366f1" stroke-width="2"/>
-        <rect x="280" y="70" width="160" height="90" rx="4" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="1" stroke-dasharray="4,4"/>
-        <text x="360" y="60" text-anchor="middle" font-size="13" fill="#818cf8" font-weight="700" font-family="system-ui">Хостел (офисное здание)</text>
-        <text x="360" y="110" text-anchor="middle" font-size="18" fill="#818cf8" font-weight="800" font-family="system-ui">30 млн</text>
+        <rect x="260" y="40" width="200" height="150" rx="8" fill="rgba(245,183,49,0.12)" stroke="#F5B731" stroke-width="2"/>
+        <rect x="280" y="70" width="160" height="90" rx="4" fill="rgba(245,183,49,0.08)" stroke="#F5B731" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="360" y="60" text-anchor="middle" font-size="13" fill="#FFCF4A" font-weight="700" font-family="system-ui">Хостел (офисное здание)</text>
+        <text x="360" y="110" text-anchor="middle" font-size="18" fill="#FFCF4A" font-weight="800" font-family="system-ui">30 млн</text>
         <text x="360" y="130" text-anchor="middle" font-size="10" fill="#a5b4fc" font-family="system-ui">рассрочка 18 мес</text>
         <text x="360" y="148" text-anchor="middle" font-size="10" fill="#64748b" font-family="system-ui">фев 2026</text>
 
         <!-- 3. Холодный ангар -->
-        <rect x="480" y="40" width="180" height="150" rx="8" fill="rgba(6,182,212,0.12)" stroke="#06b6d4" stroke-width="2"/>
-        <rect x="500" y="70" width="140" height="90" rx="4" fill="rgba(6,182,212,0.08)" stroke="#06b6d4" stroke-width="1" stroke-dasharray="4,4"/>
-        <text x="570" y="60" text-anchor="middle" font-size="13" fill="#06b6d4" font-weight="700" font-family="system-ui">Холодный ангар</text>
-        <text x="570" y="110" text-anchor="middle" font-size="18" fill="#06b6d4" font-weight="800" font-family="system-ui">16.5 млн</text>
+        <rect x="480" y="40" width="180" height="150" rx="8" fill="rgba(245,183,49,0.12)" stroke="#F5B731" stroke-width="2"/>
+        <rect x="500" y="70" width="140" height="90" rx="4" fill="rgba(245,183,49,0.08)" stroke="#F5B731" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="570" y="60" text-anchor="middle" font-size="13" fill="#F5B731" font-weight="700" font-family="system-ui">Холодный ангар</text>
+        <text x="570" y="110" text-anchor="middle" font-size="18" fill="#F5B731" font-weight="800" font-family="system-ui">16.5 млн</text>
         <text x="570" y="130" text-anchor="middle" font-size="10" fill="#22d3ee" font-family="system-ui">рассрочка 12 мес</text>
         <text x="570" y="148" text-anchor="middle" font-size="10" fill="#64748b" font-family="system-ui">окт 2025</text>
 
@@ -850,15 +876,15 @@
         <text x="510" y="318" text-anchor="middle" font-size="10" fill="#64748b" font-family="system-ui">окт 2025</text>
 
         <!-- Итого -->
-        <rect x="250" y="365" width="200" height="28" rx="14" fill="rgba(99,102,241,0.2)" stroke="rgba(99,102,241,0.4)" stroke-width="1"/>
-        <text x="350" y="384" text-anchor="middle" font-size="12" fill="#818cf8" font-weight="700" font-family="system-ui">ИТОГО: 90.4 млн</text>
+        <rect x="250" y="365" width="200" height="28" rx="14" fill="rgba(245,183,49,0.2)" stroke="rgba(245,183,49,0.4)" stroke-width="1"/>
+        <text x="350" y="384" text-anchor="middle" font-size="12" fill="#FFCF4A" font-weight="700" font-family="system-ui">ИТОГО: 90.4 млн</text>
       </svg>
     </div>
 
     <!-- Стратегия — шаги с SVG-иконками -->
     <div class="strategy-box">
       <div class="strategy-icon">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#F5B731" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
         </svg>
       </div>
@@ -869,7 +895,7 @@
     </div>
     <div class="strategy-box">
       <div class="strategy-icon">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#F5B731" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
         </svg>
       </div>
@@ -880,7 +906,7 @@
     </div>
     <div class="strategy-box">
       <div class="strategy-icon">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#F5B731" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
         </svg>
       </div>
@@ -1289,14 +1315,14 @@
 <!-- ==================== CHARTS JS ==================== -->
 <script>
   const colors = {
-    accent: '#6366f1',
-    accent2: '#818cf8',
+    accent: '#F5B731',
+    accent2: '#FFCF4A',
     green: '#22c55e',
     green2: '#4ade80',
     yellow: '#eab308',
     orange: '#f97316',
-    cyan: '#06b6d4',
-    pink: '#ec4899',
+    cyan: '#F5B731',
+    pink: '#F97316',
     red: '#ef4444',
     muted: '#94a3b8',
   };
@@ -1515,7 +1541,7 @@
       datasets: [{
         label: 'Выплаты',
         data: scatterData.map(d => ({ x: d.x, y: d.y, r: Math.max(4, Math.sqrt(d.r) * 5) })),
-        backgroundColor: scatterData.map(d => d.y > 100 ? 'rgba(34,197,94,0.6)' : d.y > 50 ? 'rgba(99,102,241,0.6)' : 'rgba(234,179,8,0.6)'),
+        backgroundColor: scatterData.map(d => d.y > 100 ? 'rgba(34,197,94,0.6)' : d.y > 50 ? 'rgba(245,183,49,0.6)' : 'rgba(234,179,8,0.6)'),
         borderColor: scatterData.map(d => d.y > 100 ? colors.green : d.y > 50 ? colors.accent : colors.yellow),
         borderWidth: 2,
       }]
