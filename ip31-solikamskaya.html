@@ -673,6 +673,85 @@
   }
   .wf-row.wf-total .wf-label,
   .wf-row.wf-total .wf-val { font-weight: 800; font-size: 1.1rem; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 480px) {
+    .hero { padding: 48px 16px 40px; }
+    .hero h1 { font-size: 1.6rem; }
+    .hero p { font-size: 0.95rem; }
+    .stats-row { gap: 8px; padding: 0 12px; }
+    .stat-card { padding: 14px 10px; min-width: 70px; }
+    .stat-card .value { font-size: 1.2rem; }
+    .stat-card .label { font-size: 0.6rem; }
+    .stat-card .sub { font-size: 0.7rem; }
+
+    .container { padding: 0 12px; }
+    section { padding: 40px 0; }
+    h2 { font-size: 1.4rem; }
+
+    /* Таблицы — горизонтальный скролл */
+    table { display: block; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+    th, td { padding: 6px 8px; font-size: 0.75rem; }
+
+    /* Объекты */
+    .objects-grid { grid-template-columns: 1fr; }
+    .obj-card { padding: 18px; }
+    .obj-num { font-size: 2rem; }
+
+    /* Timeline */
+    .timeline { padding-left: 30px; }
+    .tl-item::before { left: -22px; width: 10px; height: 10px; }
+    .tl-item.milestone::before { width: 14px; height: 14px; left: -24px; }
+
+    /* Стратегия */
+    .strategy-box { padding: 20px; gap: 16px; flex-direction: column; text-align: center; }
+    .strategy-icon { width: 56px; height: 56px; }
+
+    /* Charts */
+    .chart-grid { grid-template-columns: 1fr; }
+    .chart-box { padding: 16px; }
+
+    /* ROI */
+    .roi-highlight { padding: 24px 16px; }
+    .roi-highlight .roi-big { font-size: 2.8rem; }
+    .roi-row { flex-wrap: wrap; gap: 16px; }
+    .roi-item .ri-val { font-size: 1.3rem; }
+
+    /* Progress */
+    .progress-row { flex-wrap: wrap; gap: 6px; }
+    .progress-label { width: 100%; font-size: 0.8rem; }
+    .progress-value { width: auto; }
+
+    /* Waterfall */
+    .wf-row { flex-wrap: wrap; gap: 4px; }
+    .wf-val { width: auto; text-align: left; }
+
+    /* Before/After */
+    .ba-grid { grid-template-columns: 1fr; }
+    .ba-card { padding: 24px 16px; }
+    .ba-val { font-size: 1.6rem; }
+
+    /* Site plan SVG */
+    .site-plan { padding: 16px; overflow-x: auto; }
+    .site-plan svg { min-width: 500px; }
+
+    /* Compare */
+    .compare-grid { grid-template-columns: 1fr; gap: 8px; }
+    .compare-arrow { transform: rotate(90deg); padding: 8px 0; }
+    .compare-card .cc-val { font-size: 1.4rem; }
+
+    /* Intro grid */
+    .intro-grid { grid-template-columns: 1fr; }
+
+    /* Photo grid */
+    .photo-grid { grid-template-columns: 1fr; }
+
+    /* Map */
+    .map-wrap iframe { height: 250px; }
+
+    /* Callout */
+    .callout { padding: 14px 16px; font-size: 0.85rem; }
+  }
 </style>
 </head>
 <body>
