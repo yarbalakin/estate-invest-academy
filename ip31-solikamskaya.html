@@ -27,7 +27,8 @@
     --cyan: #F5B731;
     --pink: #F97316;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; max-width: 100%; }
+  html { overflow-x: hidden; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     background: var(--bg);
@@ -707,7 +708,7 @@
   }
   .lightbox-close:hover { opacity: 1; }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .ba-gallery { grid-template-columns: 1fr; }
     .ba-video-wrap { max-height: 400px; }
   }
@@ -844,8 +845,8 @@
     .ba-val { font-size: 1.6rem; }
 
     /* Site plan SVG */
-    .site-plan { padding: 16px; overflow-x: auto; }
-    .site-plan svg { min-width: 500px; }
+    .site-plan { padding: 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .site-plan svg { min-width: 320px; width: 100%; }
 
     /* Compare */
     .compare-grid { grid-template-columns: 1fr; gap: 8px; }
