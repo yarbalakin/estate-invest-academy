@@ -857,6 +857,14 @@
     /* Photo grid */
     .photo-grid { grid-template-columns: 1fr; }
 
+    /* Before/After photo grid */
+    .ba-gallery { grid-template-columns: 1fr; }
+    .ba-photo-grid { grid-template-columns: 1fr 1fr; }
+
+    /* CTA block */
+    .cta-block h2 { font-size: 1.3rem; }
+    .cta-block a { padding: 14px 24px; font-size: 1rem; }
+
     /* Map */
     .map-wrap iframe { height: 250px; }
 
@@ -871,7 +879,7 @@
 <div class="hero">
   <div class="hero-content">
     <div style="display:flex;justify-content:center;margin-bottom:24px;">
-      <svg width="240" height="84" viewBox="0 0 342 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="200" height="70" style="max-width:100%;height:auto" viewBox="0 0 342 120" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="120" height="120" rx="36" fill="#FFCD1E"/>
         <g clip-path="url(#clip0_hero)">
           <path d="M87 84.0003C87 84.7959 86.6839 85.559 86.1213 86.1216C85.5587 86.6842 84.7956 87.0003 84 87.0003H36C35.2044 87.0003 34.4413 86.6842 33.8787 86.1216C33.3161 85.559 33 84.7959 33 84.0003V51.9423C32.9998 51.4891 33.1023 51.0418 33.2997 50.6339C33.4972 50.2261 33.7845 49.8682 34.14 49.5873L58.14 30.6543C58.6696 30.2357 59.325 30.0081 60 30.0081C60.675 30.0081 61.3304 30.2357 61.86 30.6543L85.86 49.5843C86.2159 49.8655 86.5035 50.2238 86.7009 50.6323C86.8984 51.0407 87.0006 51.4886 87 51.9423V84.0003V84.0003ZM45 60.0003C45 63.9785 46.5804 67.7938 49.3934 70.6069C52.2064 73.4199 56.0218 75.0003 60 75.0003C63.9782 75.0003 67.7936 73.4199 70.6066 70.6069C73.4196 67.7938 75 63.9785 75 60.0003H69C69 62.3872 68.0518 64.6764 66.364 66.3642C64.6761 68.052 62.3869 69.0003 60 69.0003C57.6131 69.0003 55.3239 68.052 53.636 66.3642C51.9482 64.6764 51 62.3872 51 60.0003H45Z" fill="#1C1E21"/>
@@ -1488,10 +1496,10 @@
 
 
 <!-- ==================== FOOTER ==================== -->
-<div style="background: var(--card); border-top: 1px solid var(--border); padding: 60px 20px; text-align: center;">
+<div class="cta-block" style="background: var(--card); border-top: 1px solid var(--border); padding: 60px 20px; text-align: center;">
   <p style="color: var(--muted); font-size: 1rem; margin: 0 0 8px;">Хотите инвестировать в следующий проект?</p>
-  <h2 style="color: var(--text); font-size: 1.8rem; margin: 0 0 28px; font-weight: 700;">Оставьте заявку — расскажем про актуальные объекты</h2>
-  <a href="https://estateinvest.online/?r=QAMJERT2" target="_blank" style="display: inline-block; background: var(--accent); color: #000; font-weight: 700; font-size: 1.1rem; padding: 16px 40px; border-radius: 8px; text-decoration: none;">Подать заявку</a>
+  <h2 style="color: var(--text); font-size: clamp(1.2rem, 4vw, 1.8rem); margin: 0 0 28px; font-weight: 700;">Оставьте заявку — расскажем про актуальные объекты</h2>
+  <a href="https://estateinvest.online/?r=QAMJERT2" target="_blank" style="display: inline-block; background: var(--accent); color: #000; font-weight: 700; font-size: 1.1rem; padding: 16px 40px; border-radius: 8px; text-decoration: none; max-width: 100%;">Подать заявку</a>
 </div>
 
 <div class="footer">
