@@ -232,15 +232,57 @@ body {
 .confirm-btn:active { transform: scale(.97); }
 
 /* === HIGHER/LOWER MODE === */
+.hl-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+.hl-prev-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: .7;
+}
+.hl-prev-card .hl-prev-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.hl-prev-card .hl-prev-title {
+  font-size: 13px;
+  font-weight: 600;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hl-prev-card .hl-prev-price {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.hl-vs {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
 .hl-buttons {
   display: flex;
   gap: 12px;
-  flex: 1;
-  align-items: center;
 }
 .hl-btn {
   flex: 1;
-  padding: 24px 16px;
+  padding: 20px 16px;
   border: 2px solid var(--card-border);
   border-radius: 16px;
   background: var(--card);
@@ -251,25 +293,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   transition: all .2s;
 }
 .hl-btn:active { transform: scale(.96); }
-.hl-btn .arrow { font-size: 32px; }
+.hl-btn .arrow { font-size: 28px; }
 .hl-btn.up:active { border-color: var(--green); background: rgba(34,197,94,.1); }
 .hl-btn.down:active { border-color: var(--red); background: rgba(239,68,68,.1); }
-
-.hl-ref-price {
-  text-align: center;
-  font-size: 14px;
-  color: var(--muted);
-}
-.hl-ref-price b {
-  display: block;
-  font-size: 22px;
-  color: var(--text);
-  margin-top: 4px;
-}
 
 /* === SCORE MODE === */
 .score-options {
@@ -478,21 +508,7 @@ body {
     </div>
 
     <!-- Higher/Lower mode -->
-    <div id="hlArea" style="display:none">
-      <div class="hl-ref-price">
-        Предыдущий лот: <b id="hlRefPrice">—</b>
-      </div>
-      <div class="hl-buttons">
-        <button class="hl-btn up" onclick="submitHL('higher')">
-          <span class="arrow">&#x25B2;</span>
-          Дороже
-        </button>
-        <button class="hl-btn down" onclick="submitHL('lower')">
-          <span class="arrow">&#x25BC;</span>
-          Дешевле
-        </button>
-      </div>
-    </div>
+    <div id="hlArea" style="display:none" class="hl-container"></div>
 
     <!-- Quiz mode -->
     <div class="score-options" id="quizArea" style="display:none"></div>
@@ -587,9 +603,10 @@ let maxStreak = 0;
 let correctCount = 0;
 let roundProperties = [];
 let prevPrice = 0;
+let prevProp = null;
 let timerInterval = null;
 let timerRemaining = 0;
-const TIMER_SECONDS = { slider: 20, higher_lower: 10, quiz: 12 };
+const TIMER_SECONDS = { slider: 20, higher_lower: 12, quiz: 12 };
 
 // Best scores
 let bestScores = JSON.parse(localStorage.getItem('ei_best_scores') || '{}');
@@ -648,7 +665,9 @@ function startGame(mode) {
   maxStreak = 0;
   correctCount = 0;
   prevPrice = 0;
-  roundProperties = pickRandom(PROPERTIES, ROUNDS);
+  prevProp = null;
+  // For higher_lower we need ROUNDS+1 properties (pairs)
+  roundProperties = pickRandom(PROPERTIES, mode === 'higher_lower' ? ROUNDS + 1 : ROUNDS);
   document.getElementById('totalScore').textContent = '0';
   updateStreak();
   showScreen('gameScreen');
@@ -658,7 +677,9 @@ function startGame(mode) {
 function showRound() {
   if (roundIndex >= ROUNDS) return endGame();
 
-  const prop = roundProperties[roundIndex];
+  // For HL mode: prop[0] is first "previous", prop[1..10] are the ones to guess
+  // So the displayed card is prop[roundIndex+1], previous is prop[roundIndex]
+  const prop = currentMode === 'higher_lower' ? roundProperties[roundIndex + 1] : roundProperties[roundIndex];
   const card = document.getElementById('propCard');
   card.className = 'prop-card';
 
@@ -678,19 +699,12 @@ function showRound() {
 
   // Details
   const details = document.getElementById('propDetails');
-  let html = `
-    <div class="detail-item"><label>Площадь</label><span>${fmtArea(prop)}</span></div>
+  details.innerHTML = `
+    <div class="detail-item"><label>Цена лота</label><span class="hidden-price">???</span></div>
     <div class="detail-item"><label>Кадастровый №</label><span style="font-size:12px">${prop.cadastral}</span></div>
     <div class="detail-item"><label>Источник</label><span style="font-size:13px">${prop.source}</span></div>
     <div class="detail-item"><label>Тип торгов</label><span style="font-size:11px;font-weight:400">${prop.biddType}</span></div>
   `;
-
-  if (currentMode !== 'higher_lower') {
-    html = `<div class="detail-item"><label>Цена лота</label><span class="hidden-price">???</span></div>` + html.split('</div>').slice(1).join('</div>');
-  } else {
-    html = `<div class="detail-item"><label>Цена лота</label><span class="hidden-price">???</span></div>` + html.split('</div>').slice(1).join('</div>');
-  }
-  details.innerHTML = html;
 
   // Mode-specific UI
   document.getElementById('sliderArea').style.display = currentMode === 'slider' ? 'flex' : 'none';
@@ -729,7 +743,8 @@ function startTimer() {
 }
 
 function timeOut() {
-  const prop = roundProperties[roundIndex];
+  const idx = currentMode === 'higher_lower' ? roundIndex + 1 : roundIndex;
+  const prop = roundProperties[idx];
   streak = 0;
   updateStreak();
   showResult(false, 0, prop.price, 'Время вышло!');
@@ -789,27 +804,21 @@ function submitSlider() {
 
 // ============ HIGHER/LOWER MODE ============
 function setupHL(prop) {
-  const ref = document.getElementById('hlRefPrice');
-  if (roundIndex === 0) {
-    // First round — just show and skip
-    ref.textContent = '—';
-    prevPrice = prop.price;
-    // Auto reveal first card
-    document.querySelector('.hidden-price').textContent = fmtFull(prop.price);
-    document.getElementById('hlArea').innerHTML = `
-      <div class="hl-ref-price" style="margin-top:20px;text-align:center">
-        Запомни эту цену!<br><b>${fmtFull(prop.price)}</b>
-      </div>
-      <div style="display:flex;justify-content:center;margin-top:16px">
-        <button class="confirm-btn" style="max-width:200px" onclick="nextRoundHL()">Далее</button>
-      </div>
-    `;
-    return;
-  }
-  ref.textContent = fmtFull(prevPrice);
+  // prop is roundProperties[roundIndex+1] (the current card to guess)
+  // roundProperties[roundIndex] is the previous card
+  const prev = roundProperties[roundIndex];
+  prevPrice = prev.price;
 
-  document.getElementById('hlArea').innerHTML = `
-    <div class="hl-ref-price">Предыдущий лот:<b>${fmtFull(prevPrice)}</b></div>
+  const hlArea = document.getElementById('hlArea');
+  hlArea.innerHTML = `
+    <div class="hl-prev-card">
+      <div>
+        <div class="hl-prev-label">Предыдущий лот</div>
+        <div class="hl-prev-title">${prev.title}</div>
+      </div>
+      <div class="hl-prev-price">${fmt(prev.price)}</div>
+    </div>
+    <div class="hl-vs">ЭТОТ ЛОТ ...</div>
     <div class="hl-buttons">
       <button class="hl-btn up" onclick="submitHL('higher')">
         <span class="arrow">&#x25B2;</span>Дороже
@@ -821,14 +830,9 @@ function setupHL(prop) {
   `;
 }
 
-function nextRoundHL() {
-  roundIndex++;
-  showRound();
-}
-
 function submitHL(guess) {
   clearInterval(timerInterval);
-  const prop = roundProperties[roundIndex];
+  const prop = roundProperties[roundIndex + 1]; // current card
   const actual = prop.price >= prevPrice ? 'higher' : 'lower';
   const isCorrect = guess === actual || prop.price === prevPrice;
 
@@ -845,9 +849,8 @@ function submitHL(guess) {
   totalScore += points;
   document.getElementById('totalScore').textContent = totalScore;
 
-  prevPrice = prop.price;
-  const diff = ((prop.price - roundProperties[Math.max(0,roundIndex-1)].price) / roundProperties[Math.max(0,roundIndex-1)].price * 100);
-  showResult(isCorrect, points, prop.price, `Разница: ${diff > 0 ? '+' : ''}${Math.round(diff)}%`);
+  const diffPct = Math.round(((prop.price - prevPrice) / prevPrice) * 100);
+  showResult(isCorrect, points, prop.price, `${diffPct >= 0 ? '+' : ''}${diffPct}% от предыдущего`);
 }
 
 // ============ QUIZ MODE ============
@@ -956,7 +959,7 @@ function endGame() {
   else if (ratio >= 0.2) stars = '\u2B50';
   document.getElementById('finalStars').textContent = stars || '\u{1F4AA}';
 
-  const effectiveRounds = currentMode === 'higher_lower' ? ROUNDS - 1 : ROUNDS;
+  const effectiveRounds = ROUNDS;
   document.getElementById('finalDetail').innerHTML = `
     Правильных: <b>${correctCount}/${effectiveRounds}</b><br>
     Макс. серия: <b>${maxStreak}</b><br>
