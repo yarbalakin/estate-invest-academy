@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ИП105 · ИП106 · ИП107 — Теплогорская, 22 | Estate Invest</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%23FFCD1E'/%3E%3Cpath d='M87 84c0 .8-.316 1.559-.879 2.121C85.559 86.684 84.796 87 84 87H36c-.796 0-1.559-.316-2.121-.879C33.316 85.559 33 84.796 33 84V51.942c0-.453.102-.9.3-1.308.197-.408.484-.766.84-1.047L58.14 30.654c.53-.418 1.185-.646 1.86-.646s1.33.228 1.86.646l24 18.93c.356.281.643.639.84 1.048.198.408.3.856.3 1.308V84zm-42-24c0 3.978 1.58 7.794 4.393 10.607C52.206 73.42 56.022 75 60 75s7.794-1.58 10.607-4.393C73.42 67.794 75 63.978 75 60h-6c0 2.387-.948 4.676-2.636 6.364C64.676 68.052 62.387 69 60 69s-4.676-.948-6.364-2.636C51.948 64.676 51 62.387 51 60h-6z' fill='%231C1E21'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #000000;
+    --bg2: #0a0a0a;
+    --card: #111111;
+    --card2: #1a1a1a;
+    --border: #222222;
+    --text: #f0f0f0;
+    --muted: #8c8c8c;
+    --accent: #F5B731;
+    --accent2: #FFCF4A;
+    --green: #22c55e;
+    --green2: #4ade80;
+    --yellow: #F5B731;
+    --red: #ef4444;
+    --orange: #F97316;
+    --cyan: #F5B731;
+    --pink: #F97316;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; max-width: 100%; }
+  html { overflow-x: hidden; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    padding: 80px 20px 60px;
+    text-align: center;
+    background: linear-gradient(135deg, #000000 0%, #1a1400 50%, #000000 100%);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(245,183,49,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(245,183,49,0.05) 0%, transparent 50%);
+    animation: pulse 8s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+  .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(245,183,49,0.15);
+    border: 1px solid rgba(245,183,49,0.4);
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 640px;
+    margin: 0 auto 32px;
+  }
+  .stats-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .stat-card {
+    background: rgba(30,41,59,0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    text-align: center;
+    min-width: 160px;
+    flex: 1;
+  }
+  .stat-card .label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .stat-card .value { font-size: 1.6rem; font-weight: 800; color: #fff; }
+  .stat-card .sub { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+
+  /* Container */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+  /* Sections */
+  section { padding: 60px 0; }
+  section + section { border-top: 1px solid rgba(51,65,85,0.5); }
+  h2 { font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  h2 span { color: var(--accent2); }
+  .section-sub { color: var(--muted); font-size: 1rem; margin-bottom: 32px; }
+  h3 { font-size: 1.2rem; color: var(--accent2); margin: 24px 0 12px; }
+
+  /* Intro */
+  .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 700px) { .intro-grid { grid-template-columns: 1fr; } }
+  .intro-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .intro-card h3 { margin-top: 0; font-size: 1rem; }
+  .intro-card p { color: var(--muted); font-size: 0.95rem; }
+  .intro-card .big-num { font-size: 2rem; font-weight: 800; color: var(--green); margin: 8px 0; }
+
+  /* Map */
+  .map-wrap { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); margin: 24px 0; }
+  .map-wrap iframe { width: 100%; height: 350px; border: none; }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 40px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 14px; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--green), var(--yellow));
+    border-radius: 2px;
+  }
+  .tl-item { position: relative; margin-bottom: 28px; }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -32px; top: 6px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    background: var(--bg);
+  }
+  .tl-item.sold::before { border-color: var(--green); background: rgba(34,197,94,0.2); }
+  .tl-item.money::before { border-color: var(--yellow); background: rgba(234,179,8,0.2); }
+  .tl-item.milestone::before { border-color: var(--pink); background: rgba(249,115,22,0.2); width: 18px; height: 18px; left: -34px; top: 4px; }
+  .tl-date { font-size: 0.8rem; color: var(--accent2); font-weight: 600; }
+  .tl-title { font-size: 1.05rem; color: #fff; font-weight: 600; margin: 2px 0; }
+  .tl-desc { color: var(--muted); font-size: 0.9rem; }
+  .tl-amount {
+    display: inline-block;
+    background: rgba(34,197,94,0.15);
+    color: var(--green);
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+
+  /* Objects grid */
+  .objects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .obj-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .obj-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .obj-card.obj-105::before { background: var(--green); }
+  .obj-card.obj-106::before { background: var(--accent); }
+  .obj-card.obj-107::before { background: var(--orange); }
+  .obj-num {
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(245,183,49,0.12);
+    position: absolute;
+    top: 10px; right: 16px;
+    line-height: 1;
+  }
+  .obj-card h4 { font-size: 1.1rem; color: #fff; margin-bottom: 8px; }
+  .obj-card .obj-price { font-size: 1.4rem; font-weight: 700; color: var(--green); margin: 8px 0; }
+  .obj-card .obj-meta { font-size: 0.85rem; color: var(--muted); line-height: 1.8; }
+  .obj-status {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .status-closed { background: rgba(34,197,94,0.15); color: var(--green); }
+  .status-open { background: rgba(245,183,49,0.15); color: var(--yellow); }
+  .status-installment { background: rgba(234,179,8,0.15); color: var(--yellow); }
+
+  /* Before/After gallery */
+  .ba-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 24px 0 32px;
+    align-items: stretch;
+  }
+  .ba-gallery-side { display: flex; flex-direction: column; }
+  .ba-gallery-side h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    padding: 6px 16px;
+    border-radius: 8px;
+    display: inline-block;
+  }
+  .ba-gallery-side h4.label-before {
+    background: rgba(239,68,68,0.15);
+    color: var(--red);
+    border: 1px solid rgba(239,68,68,0.3);
+  }
+  .ba-gallery-side h4.label-after {
+    background: rgba(34,197,94,0.15);
+    color: var(--green);
+    border: 1px solid rgba(34,197,94,0.3);
+  }
+  .ba-photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    flex: 1;
+  }
+  .ba-photo-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--border);
+  }
+  .ba-photo-grid img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+
+  /* Photo grid */
+  .photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 24px 0; }
+  .photo-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--border);
+  }
+  .photo-grid img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 32px rgba(245,183,49,0.15);
+    border-color: var(--accent);
+  }
+  .photo-placeholder {
+    background: linear-gradient(135deg, var(--card), var(--card2));
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    aspect-ratio: 16/10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  /* Strategy */
+  .strategy-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin: 20px 0;
+  }
+  @media (max-width: 700px) { .strategy-box { flex-direction: column; text-align: center; } }
+  .strategy-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+    width: 80px; height: 80px;
+    background: rgba(245,183,49,0.15);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .strategy-text h3 { margin-top: 0; }
+  .strategy-text p { color: var(--muted); font-size: 0.95rem; }
+
+  /* Callout */
+  .callout {
+    background: rgba(245,183,49,0.1);
+    border: 1px solid rgba(245,183,49,0.3);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-size: 0.95rem;
+  }
+  .callout.green { background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.3); }
+
+  /* ROI highlight */
+  .roi-highlight {
+    background: linear-gradient(135deg, rgba(245,183,49,0.15), rgba(34,197,94,0.1));
+    border: 1px solid rgba(245,183,49,0.3);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    margin: 32px 0;
+  }
+  .roi-highlight .roi-big {
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent2), var(--green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .roi-highlight .roi-label { font-size: 1.1rem; color: var(--muted); }
+  .roi-row { display: flex; justify-content: center; gap: 40px; margin-top: 24px; flex-wrap: wrap; }
+  .roi-item { text-align: center; }
+  .roi-item .ri-val { font-size: 1.8rem; font-weight: 800; color: #fff; }
+  .roi-item .ri-label { font-size: 0.8rem; color: var(--muted); }
+
+  /* Waterfall */
+  .waterfall { margin: 20px 0; }
+  .wf-row {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(51,65,85,0.5);
+  }
+  .wf-label { flex: 1; font-size: 0.95rem; }
+  .wf-val { font-size: 1rem; font-weight: 600; font-variant-numeric: tabular-nums; width: 140px; text-align: right; }
+  .wf-row.wf-total { border-top: 2px solid var(--accent); border-bottom: none; padding-top: 12px; margin-top: 4px; }
+  .wf-row.wf-total .wf-label, .wf-row.wf-total .wf-val { font-weight: 800; font-size: 1.1rem; }
+
+  /* Renovation steps */
+  .reno-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 24px 0; }
+  .reno-step {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+  }
+  .reno-step .step-num {
+    font-size: 2rem;
+    font-weight: 900;
+    color: rgba(245,183,49,0.25);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .reno-step h4 { font-size: 1rem; color: var(--accent2); margin-bottom: 6px; }
+  .reno-step p { font-size: 0.85rem; color: var(--muted); }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.92);
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
+  .lightbox-close {
+    position: absolute;
+    top: 20px; right: 24px;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    opacity: 0.7;
+    z-index: 10000;
+  }
+  .lightbox-close:hover { opacity: 1; }
+
+  /* Footer */
+  .footer {
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* CTA */
+  .cta-block {
+    background: linear-gradient(135deg, rgba(245,183,49,0.12), rgba(34,197,94,0.08));
+    border: 1px solid rgba(245,183,49,0.3);
+    border-radius: 20px;
+    padding: 48px 32px;
+    text-align: center;
+    margin: 32px 0;
+  }
+  .cta-block h2 { font-size: 1.6rem; margin-bottom: 12px; }
+  .cta-block p { color: var(--muted); margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .cta-block a {
+    display: inline-block;
+    background: var(--accent);
+    color: #000;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 14px 36px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .cta-block a:hover { background: var(--accent2); transform: translateY(-2px); }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    .hero { padding: 48px 16px 40px; }
+    .hero h1 { font-size: 1.6rem; }
+    .stats-row { gap: 8px; padding: 0 12px; display: grid; grid-template-columns: 1fr 1fr; }
+    .stat-card { padding: 16px 12px; min-width: 0; }
+    .stat-card .value { font-size: 1.3rem; }
+    .ba-gallery { grid-template-columns: 1fr; }
+    .reno-steps { grid-template-columns: 1fr; }
+    .objects-grid { grid-template-columns: 1fr; }
+    .roi-row { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<div class="hero">
+  <div class="hero-content">
+    <div style="display:flex;justify-content:center;margin-bottom:24px;">
+      <svg width="200" height="70" style="max-width:100%;height:auto" viewBox="0 0 342 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="120" height="120" rx="36" fill="#FFCD1E"/>
+        <g clip-path="url(#clip0_hero)">
+          <path d="M87 84.0003C87 84.7959 86.6839 85.559 86.1213 86.1216C85.5587 86.6842 84.7956 87.0003 84 87.0003H36C35.2044 87.0003 34.4413 86.6842 33.8787 86.1216C33.3161 85.559 33 84.7959 33 84.0003V51.9423C32.9998 51.4891 33.1023 51.0418 33.2997 50.6339C33.4972 50.2261 33.7845 49.8682 34.14 49.5873L58.14 30.6543C58.6696 30.2357 59.325 30.0081 60 30.0081C60.675 30.0081 61.3304 30.2357 61.86 30.6543L85.86 49.5843C86.2159 49.8655 86.5035 50.2238 86.7009 50.6323C86.8984 51.0407 87.0006 51.4886 87 51.9423V84.0003ZM45 60.0003C45 63.9785 46.5804 67.7938 49.3934 70.6069C52.2064 73.4199 56.0218 75.0003 60 75.0003C63.9782 75.0003 67.7936 73.4199 70.6066 70.6069C73.4196 67.7938 75 63.9785 75 60.0003H69C69 62.3872 68.0518 64.6764 66.364 66.3642C64.6761 68.052 62.3869 69.0003 60 69.0003C57.6131 69.0003 55.3239 68.052 53.636 66.3642C51.9482 64.6764 51 62.3872 51 60.0003H45Z" fill="#1C1E21"/>
+        </g>
+        <path d="M156.725 51.7362H180.316V45.5667H164.975V37.9389H179.412V32.1619H164.975V24.7865H180.316V18.617H156.725V51.7362Z" fill="white"/>
+        <path d="M199.02 52.3532C202.033 52.3532 204.614 51.9232 206.761 51.0632C208.927 50.2032 210.584 48.9786 211.733 47.3895C212.882 45.8004 213.457 43.9215 213.457 41.7528V41.7247C213.457 39.1073 212.59 37.0508 210.858 35.5552C209.125 34.0595 206.412 32.9658 202.721 32.2741L199.104 31.6011C197.164 31.2271 195.752 30.7504 194.866 30.1708C193.981 29.5726 193.539 28.778 193.539 27.7871V27.7591C193.539 27.0113 193.755 26.3663 194.188 25.8241C194.622 25.2632 195.243 24.8332 196.053 24.5341C196.863 24.2163 197.842 24.0574 198.991 24.0574C200.668 24.0387 202.043 24.3752 203.116 25.0669C204.209 25.7587 204.84 26.7028 205.009 27.8993L205.038 28.1798H212.751L212.722 27.7591C212.609 25.8148 211.997 24.1135 210.886 22.6552C209.775 21.1783 208.211 20.0378 206.196 19.2339C204.199 18.4113 201.788 18 198.963 18C196.326 18 193.981 18.43 191.928 19.29C189.875 20.1313 188.255 21.3185 187.069 22.8515C185.901 24.3845 185.317 26.1887 185.317 28.2639V28.2919C185.317 30.7971 186.193 32.8443 187.945 34.4334C189.696 36.0226 192.314 37.135 195.799 37.7706L199.443 38.4717C201.534 38.8643 203.022 39.3504 203.907 39.9299C204.793 40.5095 205.235 41.3228 205.235 42.3697V42.3978C205.235 43.183 204.981 43.8747 204.472 44.473C203.983 45.0525 203.286 45.5106 202.382 45.8471C201.478 46.1649 200.413 46.3238 199.189 46.3238C197.965 46.3238 196.872 46.1649 195.912 45.8471C194.951 45.5106 194.16 45.0525 193.539 44.473C192.936 43.8934 192.569 43.211 192.437 42.4258L192.38 42.1734H184.639L184.667 42.566C184.799 44.6225 185.458 46.3893 186.645 47.8662C187.85 49.3245 189.498 50.4369 191.589 51.2034C193.699 51.9699 196.176 52.3532 199.02 52.3532Z" fill="white"/>
+        <path d="M226.397 51.7362H234.647V24.7865H244.535V18.617H216.536V24.7865H226.397V51.7362Z" fill="white"/>
+        <path d="M242.331 51.7362H251.005L259.113 25.4035H261.656V18.617H254.226L242.331 51.7362ZM249.055 44.0243H269.341L267.448 38.4717H250.977L249.055 44.0243ZM267.42 51.7362H276.093L264.199 18.617H259.311V25.4035L267.42 51.7362Z" fill="white"/>
+        <path d="M283.806 51.7362H292.056V24.7865H301.945V18.617H273.946V24.7865H283.806V51.7362Z" fill="white"/>
+        <path d="M306.409 51.7362H330V45.5667H314.659V37.9389H329.096V32.1619H314.659V24.7865H330V18.617H306.409V51.7362Z" fill="white"/>
+        <g opacity="0.5">
+          <path d="M156 104.383H164.25V71.2634H156V104.383Z" fill="white"/>
+          <path d="M170.522 104.383H178.687V83.7988H182.219L176.031 79.8728L193.689 104.383H200.64V71.2634H192.446V91.7071H188.943L195.13 95.6332L177.529 71.2634H170.522V104.383Z" fill="white"/>
+          <path d="M215.924 104.383H226.321L237.623 71.2634H228.384L221.236 96.6988H221.01L213.89 71.2634H204.651L215.924 104.383Z" fill="white"/>
+          <path d="M241.606 104.383H265.197V98.2132H249.856V90.5853H264.293V84.8084H249.856V77.433H265.197V71.2634H241.606V104.383Z" fill="white"/>
+          <path d="M283.901 105C286.914 105 289.495 104.57 291.642 103.71C293.808 102.85 295.466 101.625 296.615 100.036C297.763 98.4469 298.338 96.5679 298.338 94.3993V94.3712C298.338 91.7538 297.472 89.6973 295.739 88.2017C294.006 86.706 291.294 85.6123 287.602 84.9206L283.986 84.2475C282.045 83.8736 280.633 83.3969 279.748 82.8173C278.862 82.2191 278.42 81.4245 278.42 80.4336V80.4056C278.42 79.6578 278.636 79.0128 279.07 78.4706C279.503 77.9097 280.124 77.4797 280.934 77.1806C281.744 76.8628 282.724 76.7039 283.872 76.7039C285.549 76.6852 286.924 77.0217 287.997 77.7134C289.09 78.4052 289.721 79.3493 289.89 80.5458L289.919 80.8262H297.632L297.603 80.4056C297.49 78.4612 296.878 76.7599 295.767 75.3017C294.656 73.8247 293.092 72.6843 291.077 71.8804C289.08 71.0578 286.67 70.6465 283.844 70.6465C281.207 70.6465 278.862 71.0765 276.809 71.9365C274.756 72.7778 273.136 73.965 271.95 75.498C270.782 77.031 270.198 78.8352 270.198 80.9104V80.9384C270.198 83.4436 271.074 85.4908 272.826 87.0799C274.577 88.669 277.195 89.7814 280.68 90.4171L284.325 91.1182C286.415 91.5108 287.903 91.9969 288.788 92.5764C289.674 93.156 290.116 93.9693 290.116 95.0162V95.0443C290.116 95.8295 289.862 96.5212 289.354 97.1195C288.864 97.699 288.167 98.1571 287.263 98.4936C286.359 98.8114 285.295 98.9703 284.07 98.9703C282.846 98.9703 281.754 98.8114 280.793 98.4936C279.832 98.1571 279.041 97.699 278.42 97.1195C277.817 96.5399 277.45 95.8575 277.318 95.0723L277.261 94.8199H269.52L269.548 95.2125C269.68 97.269 270.339 99.0358 271.526 100.513C272.731 101.971 274.38 103.083 276.47 103.85C278.58 104.616 281.057 105 283.901 105Z" fill="white"/>
+          <path d="M311.278 104.383H319.528V77.433H329.416V71.2634H301.418V77.433H311.278V104.383Z" fill="white"/>
+        </g>
+        <defs><clipPath id="clip0_hero"><rect width="72" height="72" fill="white" transform="translate(24 24)"/></clipPath></defs>
+      </svg>
+    </div>
+    <div class="hero-badge">Инвест-предложение</div>
+    <h1>Теплогорская, 22</h1>
+    <p>Одно помещение — три инвест-предложения. ИП105, ИП106 и ИП107: как мы разделили один объект на три независимых актива и дали инвесторам выбор</p>
+  </div>
+  <div class="stats-row" style="margin-top: 32px;">
+    <div class="stat-card">
+      <div class="label">Объектов</div>
+      <div class="value">3</div>
+      <div class="sub">ИП 105 · 106 · 107</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Адрес</div>
+      <div class="value" style="font-size: 1.1rem;">Теплогорская, 22</div>
+      <div class="sub">Пермь</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Статус</div>
+      <div class="value" style="color: var(--accent2); font-size: 1.1rem;">Активно</div>
+      <div class="sub">открыт сбор</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Стратегия</div>
+      <div class="value" style="font-size: 1rem; line-height: 1.4;">Ремонт<br>+ продажа</div>
+      <div class="sub">3 варианта входа</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ОБ ОБЪЕКТЕ ==================== -->
+<section style="background: var(--bg2);">
+  <div class="container">
+    <h2>Что мы <span>купили</span></h2>
+    <p class="section-sub">Коммерческое помещение в Перми — одна локация, три отдельных инвест-предложения</p>
+
+    <div class="intro-grid">
+      <div class="intro-card">
+        <h3>Помещение</h3>
+        <div class="big-num">— м²</div>
+        <p>Коммерческое помещение по адресу Теплогорская, 22. Покупка состоялась на торгах по банкротству — ниже рынка. Планируется ремонт и продажа тремя разными способами.</p>
+      </div>
+      <div class="intro-card">
+        <h3>Три предложения</h3>
+        <div class="big-num">105 · 106 · 107</div>
+        <p>Каждый ИП — отдельный вход для инвестора с разными условиями: разные доли, порог входа и прогноз доходности. Одно помещение закрывает три разных запроса.</p>
+      </div>
+    </div>
+
+    <!-- Карта -->
+    <div class="map-wrap" style="margin-top: 24px;">
+      <iframe src="https://yandex.ru/map-widget/v1/?ll=56.2965%2C58.0105&z=16&pt=56.2965%2C58.0105%2Cpm2rdm&l=sat%2Cskl&source=constructor" allowfullscreen></iframe>
+    </div>
+    <p style="text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 8px;">г. Пермь, ул. Теплогорская, д. 22</p>
+
+    <!-- Фото до ремонта -->
+    <h3 style="margin-top: 32px;">Объект на момент покупки</h3>
+    <div class="photo-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+      <div class="photo-placeholder">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        Фото до — общий вид
+      </div>
+      <div class="photo-placeholder">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        Фото до — вход
+      </div>
+      <div class="photo-placeholder">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        Фото до — внутри
+      </div>
+      <div class="photo-placeholder">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        Фото до — потолок/пол
+      </div>
+    </div>
+    <p style="text-align: center; color: var(--muted); font-size: 0.8rem; margin-top: 8px;">Состояние помещения до начала ремонта</p>
+  </div>
+</section>
+
+<!-- ==================== РЕМОНТ ==================== -->
+<section>
+  <div class="container">
+    <h2>Процесс <span>ремонта</span></h2>
+    <p class="section-sub">Что делали, как делали и что получили в итоге</p>
+
+    <!-- Этапы ремонта -->
+    <div class="reno-steps">
+      <div class="reno-step">
+        <div class="step-num">01</div>
+        <h4>Демонтаж</h4>
+        <p>Снос старых перегородок, вывоз мусора, подготовка пространства под новую планировку.</p>
+      </div>
+      <div class="reno-step">
+        <div class="step-num">02</div>
+        <h4>Инженерные сети</h4>
+        <p>Электрика, водоснабжение, отопление — всё по новой схеме. Замена устаревших коммуникаций.</p>
+      </div>
+      <div class="reno-step">
+        <div class="step-num">03</div>
+        <h4>Черновая отделка</h4>
+        <p>Выравнивание стен, стяжка пола, подготовка потолков под финишное покрытие.</p>
+      </div>
+      <div class="reno-step">
+        <div class="step-num">04</div>
+        <h4>Чистовая отделка</h4>
+        <p>Финишная отделка: покраска, укладка напольного покрытия, установка дверей и освещения.</p>
+      </div>
+    </div>
+
+    <!-- Фото До / После -->
+    <h3 style="margin-top: 40px;">Было / Стало</h3>
+
+    <div class="ba-gallery">
+      <div class="ba-gallery-side">
+        <h4 class="label-before">До ремонта</h4>
+        <div class="ba-photo-grid">
+          <div class="photo-placeholder" style="border-radius: 10px; aspect-ratio: 4/3;">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            До — зона 1
+          </div>
+          <div class="photo-placeholder" style="border-radius: 10px; aspect-ratio: 4/3;">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            До — зона 2
+          </div>
+          <div class="photo-placeholder" style="border-radius: 10px; aspect-ratio: 4/3;">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            До — зона 3
+          </div>
+          <div class="photo-placeholder" style="border-radius: 10px; aspect-ratio: 4/3;">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            До — зона 4
+          </div>
+        </div>
+      </div>
+
+      <div class="ba-gallery-side">
+        <h4 class="label-after">После ремонта</h4>
+        <div class="ba-photo-grid">
+          <div class="photo-placeholder" style="border-radius: 10px; aspect-ratio: 4/3;">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            После — зона 1
+          </div>
+          <div class="photo-placeholder" style="border-radius: 10px; aspect-ratio: 4/3;">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            После — зона 2
+          </div>
+          <div class="photo-placeholder" style="border-radius: 10px; aspect-ratio: 4/3;">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            После — зона 3
+          </div>
+          <div class="photo-placeholder" style="border-radius: 10px; aspect-ratio: 4/3;">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            После — зона 4
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout green">
+      Когда появятся фото — замените плейсхолдеры на реальные <code>img src="media/teplogorsaya-before-1.jpg"</code> и т.д. Lightbox уже подключён.
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ТРИ ИП ==================== -->
+<section style="background: var(--bg2);">
+  <div class="container">
+    <h2>Три инвест-<span>предложения</span></h2>
+    <p class="section-sub">Одно помещение — три варианта входа. Разные доли, разные суммы, разная доходность</p>
+
+    <div class="objects-grid">
+
+      <!-- ИП 105 -->
+      <div class="obj-card obj-105">
+        <div class="obj-num">105</div>
+        <h4>ИП 105</h4>
+        <p style="font-size: 0.8rem; color: var(--muted); margin-bottom: 8px;">Теплогорская, 22</p>
+        <div class="obj-price">— ₽</div>
+        <div class="obj-meta">
+          Площадь: — м²<br>
+          Тип входа: —<br>
+          Срок: — мес<br>
+          Прогноз доходности: —% годовых
+        </div>
+        <span class="obj-status status-open">Открыт сбор</span>
+      </div>
+
+      <!-- ИП 106 -->
+      <div class="obj-card obj-106">
+        <div class="obj-num">106</div>
+        <h4>ИП 106</h4>
+        <p style="font-size: 0.8rem; color: var(--muted); margin-bottom: 8px;">Теплогорская, 22</p>
+        <div class="obj-price">— ₽</div>
+        <div class="obj-meta">
+          Площадь: — м²<br>
+          Тип входа: —<br>
+          Срок: — мес<br>
+          Прогноз доходности: —% годовых
+        </div>
+        <span class="obj-status status-open">Открыт сбор</span>
+      </div>
+
+      <!-- ИП 107 -->
+      <div class="obj-card obj-107">
+        <div class="obj-num">107</div>
+        <h4>ИП 107</h4>
+        <p style="font-size: 0.8rem; color: var(--muted); margin-bottom: 8px;">Теплогорская, 22</p>
+        <div class="obj-price">— ₽</div>
+        <div class="obj-meta">
+          Площадь: — м²<br>
+          Тип входа: —<br>
+          Срок: — мес<br>
+          Прогноз доходности: —% годовых
+        </div>
+        <span class="obj-status status-open">Открыт сбор</span>
+      </div>
+
+    </div>
+
+    <div class="callout" style="margin-top: 24px;">
+      Заполните данные по каждому ИП: цена входа, площадь, срок, доходность. Текущие прочерки — плейсхолдеры.
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ФИНАНСЫ ==================== -->
+<section>
+  <div class="container">
+    <h2>Финансовая <span>модель</span></h2>
+    <p class="section-sub">Структура затрат и прогноз по всем трём инвест-предложениям</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+      <div>
+        <h3>Затраты</h3>
+        <div class="waterfall">
+          <div class="wf-row">
+            <span class="wf-label">Покупка объекта</span>
+            <span class="wf-val" style="color: var(--red);">— ₽</span>
+          </div>
+          <div class="wf-row">
+            <span class="wf-label">Ремонт</span>
+            <span class="wf-val" style="color: var(--red);">— ₽</span>
+          </div>
+          <div class="wf-row">
+            <span class="wf-label">Оформление / расходы</span>
+            <span class="wf-val" style="color: var(--red);">— ₽</span>
+          </div>
+          <div class="wf-row wf-total">
+            <span class="wf-label">Итого затрат</span>
+            <span class="wf-val" style="color: var(--accent2);">— ₽</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3>Выручка</h3>
+        <div class="waterfall">
+          <div class="wf-row">
+            <span class="wf-label">ИП 105 — продажа</span>
+            <span class="wf-val" style="color: var(--green);">— ₽</span>
+          </div>
+          <div class="wf-row">
+            <span class="wf-label">ИП 106 — продажа</span>
+            <span class="wf-val" style="color: var(--green);">— ₽</span>
+          </div>
+          <div class="wf-row">
+            <span class="wf-label">ИП 107 — продажа</span>
+            <span class="wf-val" style="color: var(--green);">— ₽</span>
+          </div>
+          <div class="wf-row wf-total">
+            <span class="wf-label">Итого выручка</span>
+            <span class="wf-val" style="color: var(--green);">— ₽</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROI -->
+    <div class="roi-highlight" style="margin-top: 40px;">
+      <div class="roi-big">—%</div>
+      <div class="roi-label">прогноз годовых для инвесторов</div>
+      <div class="roi-row">
+        <div class="roi-item">
+          <div class="ri-val">— ₽</div>
+          <div class="ri-label">прибыль инвесторов</div>
+        </div>
+        <div class="roi-item">
+          <div class="ri-val">— мес</div>
+          <div class="ri-label">срок проекта</div>
+        </div>
+        <div class="roi-item">
+          <div class="ri-val">x—</div>
+          <div class="ri-label">к вложенным</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ХРОНОЛОГИЯ ==================== -->
+<section style="background: var(--bg2);">
+  <div class="container">
+    <h2>Хронология <span>проекта</span></h2>
+    <p class="section-sub">Ключевые события от покупки до продажи</p>
+
+    <div class="timeline">
+      <div class="tl-item milestone">
+        <div class="tl-date">— 2025</div>
+        <div class="tl-title">Покупка объекта</div>
+        <div class="tl-desc">Торги по банкротству. Приобретение помещения по адресу Теплогорская, 22.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">— 2025</div>
+        <div class="tl-title">Запуск ИП 105 · 106 · 107</div>
+        <div class="tl-desc">Открытие трёх инвест-предложений. Начало сбора инвесторов.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">— 2025</div>
+        <div class="tl-title">Начало ремонта</div>
+        <div class="tl-desc">Демонтажные работы, прокладка инженерных сетей, черновая отделка.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">— 2025</div>
+        <div class="tl-title">Завершение ремонта</div>
+        <div class="tl-desc">Чистовая отделка, фотосессия объекта, выход на рынок.</div>
+      </div>
+      <div class="tl-item sold">
+        <div class="tl-date">Прогноз</div>
+        <div class="tl-title">Продажа всех трёх объектов</div>
+        <div class="tl-desc">Закрытие ИП 105, ИП 106, ИП 107. Выплата инвесторам.</div>
+        <div class="tl-amount">+ — ₽ инвесторам</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CTA ==================== -->
+<section>
+  <div class="container">
+    <div class="cta-block">
+      <h2>Хотите инвестировать в этот объект?</h2>
+      <p>ИП105, ИП106, ИП107 — три варианта входа на разный бюджет. Оставьте заявку и мы подберём подходящий.</p>
+      <a href="https://t.me/estate_invest_perm" target="_blank" rel="noopener">Написать в Telegram</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<div class="footer">
+  <div style="margin-bottom: 8px;">
+    <svg width="80" height="28" style="height:auto" viewBox="0 0 342 120" fill="none" xmlns="http://www.w3.org/2000/svg" opacity="0.4">
+      <rect width="120" height="120" rx="36" fill="#FFCD1E"/>
+      <g clip-path="url(#clip0_footer)">
+        <path d="M87 84.0003C87 84.7959 86.6839 85.559 86.1213 86.1216C85.5587 86.6842 84.7956 87.0003 84 87.0003H36C35.2044 87.0003 34.4413 86.6842 33.8787 86.1216C33.3161 85.559 33 84.7959 33 84.0003V51.9423C32.9998 51.4891 33.1023 51.0418 33.2997 50.6339C33.4972 50.2261 33.7845 49.8682 34.14 49.5873L58.14 30.6543C58.6696 30.2357 59.325 30.0081 60 30.0081C60.675 30.0081 61.3304 30.2357 61.86 30.6543L85.86 49.5843C86.2159 49.8655 86.5035 50.2238 86.7009 50.6323C86.8984 51.0407 87.0006 51.4886 87 51.9423V84.0003ZM45 60.0003C45 63.9785 46.5804 67.7938 49.3934 70.6069C52.2064 73.4199 56.0218 75.0003 60 75.0003C63.9782 75.0003 67.7936 73.4199 70.6066 70.6069C73.4196 67.7938 75 63.9785 75 60.0003H69C69 62.3872 68.0518 64.6764 66.364 66.3642C64.6761 68.052 62.3869 69.0003 60 69.0003C57.6131 69.0003 55.3239 68.052 53.636 66.3642C51.9482 64.6764 51 62.3872 51 60.0003H45Z" fill="#1C1E21"/>
+      </g>
+      <path d="M156.725 51.7362H180.316V45.5667H164.975V37.9389H179.412V32.1619H164.975V24.7865H180.316V18.617H156.725V51.7362Z" fill="white"/>
+      <path d="M283.806 51.7362H292.056V24.7865H301.945V18.617H273.946V24.7865H283.806V51.7362Z" fill="white"/>
+      <path d="M306.409 51.7362H330V45.5667H314.659V37.9389H329.096V32.1619H314.659V24.7865H330V18.617H306.409V51.7362Z" fill="white"/>
+      <defs><clipPath id="clip0_footer"><rect width="72" height="72" fill="white" transform="translate(24 24)"/></clipPath></defs>
+    </svg>
+  </div>
+  Estate Invest &mdash; ИП105 · ИП106 · ИП107 · Теплогорская, 22, Пермь<br>
+  <span style="opacity: 0.5;">Данные носят информационный характер. Доходность не гарантирована.</span>
+</div>
+
+<!-- ==================== LIGHTBOX ==================== -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  function openLightbox(img) {
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
